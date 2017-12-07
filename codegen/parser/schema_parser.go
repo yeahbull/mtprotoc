@@ -57,6 +57,7 @@ func makeVectorType(schemas *Schemas, vecType string, vectemplate string) Type {
 			t = TVectorType{CustomType{vectemplate}}
 		}
 	} else if IsBuiltInTypeByName(vectemplate) {
+		// glog.Info(vectemplate)
 		// built-in type
 		if vecType == "vector" {
 			t = BuiltInVectorType{MakeBuiltInType(vectemplate)}

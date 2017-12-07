@@ -26,6 +26,8 @@ option java_package = "com.nebulaim.engine.mtproto";
 option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
+// import "schema.tl.core_types.proto";
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // rpc_drop_answer#58e4a740 req_msg_id:long = RpcDropAnswer;

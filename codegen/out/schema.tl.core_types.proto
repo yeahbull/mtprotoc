@@ -27,27 +27,6 @@ option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
 
-///////////////////////////////////////////////////////////////////////////////
-// Bool <--
-//  + TL_boolFalse
-//  + TL_boolTrue
-//
-message Bool_Data {
-}
-
-message Bool {
-    int32 constructor = 1;
-    Bool_Data data = 2;
-}
-
-// boolFalse#bc799737 = Bool;
-message TL_boolFalse {
-    Bool data = 2;
-}
-// boolTrue#997275b5 = Bool;
-message TL_boolTrue {
-    Bool data = 2;
-}
 
 ///////////////////////////////////////////////////////////////////////////////
 // True <--
@@ -65,6 +44,7 @@ message True {
 message TL_true {
     True data = 2;
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Error <--
@@ -85,6 +65,7 @@ message TL_error {
     Error data = 2;
 }
 
+
 ///////////////////////////////////////////////////////////////////////////////
 // Null <--
 //  + TL_null
@@ -101,4 +82,29 @@ message Null {
 message TL_null {
     Null data = 2;
 }
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Bool <--
+//  + TL_boolFalse
+//  + TL_boolTrue
+//
+message Bool_Data {
+}
+
+message Bool {
+    int32 constructor = 1;
+    Bool_Data data = 2;
+}
+
+// boolFalse#bc799737 = Bool;
+message TL_boolFalse {
+    Bool data = 2;
+}
+
+// boolTrue#997275b5 = Bool;
+message TL_boolTrue {
+    Bool data = 2;
+}
+
 

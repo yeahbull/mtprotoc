@@ -26,10 +26,10 @@ option java_package = "com.nebulaim.engine.mtproto";
 option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
-{{ range .ConstructoList }}
+{{ range .BaseTypeList }}
 ///////////////////////////////////////////////////////////////////////////////
 // {{.Name}} <--
-{{ range .MessageList2 }}//  + TL_{{.Name}}
+{{ range .SubMessageList }}//  + TL_{{.Name}}
 {{end}}//
 message {{.Name}}_Data {
 {{range .ParamList}}    {{.Type}} {{.Name}} = {{.Index}};
@@ -40,7 +40,7 @@ message {{.Name}} {
     {{.Name}}_Data data = 2;
 }
 
-{{ range .MessageList2 }}// {{.Line}}
+{{ range .SubMessageList }}// {{.Line}}
 message TL_{{.Name}} {
     {{.ResType}} data = 2;
 }

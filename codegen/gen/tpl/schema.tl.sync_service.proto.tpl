@@ -29,7 +29,7 @@ option optimize_for = CODE_SIZE;
 import "schema.tl.core_types.proto";
 import "schema.tl.sync.proto";
 
-{{ range .FunctionList }}
+{{ range .RequestList }}
 ///////////////////////////////////////////////////////////////////////////////
 // {{.Line}}
 message TL_{{.Name}} {
@@ -38,10 +38,17 @@ message TL_{{.Name}} {
 {{end}}
 
 ///////////////////////////////////////////////////////////////////////////////
-// service
-{{ range .RPCList }}
+// Vector api result type
+{{ range .VectorResList }}message Vector_{{.Name}} {
+    {{.Type}} datas = 1;
+}
+{{end}}
+
+///////////////////////////////////////////////////////////////////////////////
+// rpc
+{{ range .ServiceList }}
 service RPC{{.Name}} {
-{{range .MessageList2}}    // {{.Line}}
-    rpc {{.Name}}(TL_{{.Name}}) returns ({{.ResType}}) {}
+{{range .SubMessageList}}// {{.Line}}
+rpc {{.Name}}(TL_{{.Name}}) returns ({{.ResType}}) {}
 {{end}}}
 {{end}}

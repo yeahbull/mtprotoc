@@ -26,7 +26,9 @@ option java_package = "com.nebulaim.engine.mtproto";
 option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
-{{ range .FunctionList }}
+// import "schema.tl.core_types.proto";
+
+{{ range .RequestList }}
 ///////////////////////////////////////////////////////////////////////////////
 // {{.Line}}
 message TL_{{.Name}} {
