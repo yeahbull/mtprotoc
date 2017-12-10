@@ -15,30 +15,15 @@
  * limitations under the License.
  */
 
-package main
+package mtproto
 
-import (
-	mtproto_parser "github.com/nebulaim/mtprotoc/codegen/parser"
-	"github.com/golang/glog"
-	"flag"
-	"github.com/nebulaim/mtprotoc/codegen/gen/golang"
+const (
+	MTPROTO_VERSION= 2
 )
 
-func init() {
-	flag.Set("alsologtostderr", "true")
-	flag.Set("log_dir", "false")
+type TLObject interface {
+	Encode() []byte
+	Decode(dbuf *DecodeBuf) error
+	String() string
 }
 
-func main() {
-	flag.Parse()
-
-	schemas, err := mtproto_parser.Parse("./schemas/scheme.tl")
-	if err != nil {
-		glog.Fatal(err)
-	}
-
-	// glog.Info(schemas.Layer)
-	// glog.Info(schemas.TypeMap)
-	// genproto.GenProto(schemas, "./")
-	gengolang.GenGolang(schemas, "./")
-}

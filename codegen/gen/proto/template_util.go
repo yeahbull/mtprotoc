@@ -105,6 +105,8 @@ func toProtoType(t mtproto_parser.Type) (n string) {
 		n = "int32"
 	case mtproto_parser.LongType:
 		n = "int64"
+	case mtproto_parser.DoubleType:
+		n = "double"
 	case mtproto_parser.Int128Type:
 		n = "bytes"
 	case mtproto_parser.Int256Type:

@@ -214,6 +214,13 @@ func (this LongType) Name() string {
 	return "long"
 }
 
+type DoubleType struct {
+}
+
+func (this DoubleType) Name() string {
+	return "double"
+}
+
 type Int128Type struct {
 }
 
@@ -244,7 +251,7 @@ func (this BytesType) Name() string {
 
 func IsBuiltInType(t Type) bool {
 	switch t.(type) {
-	case BoolType, IntType, LongType, Int128Type, Int256Type, StringType, BytesType:
+	case BoolType, IntType, LongType, DoubleType, Int128Type, Int256Type, StringType, BytesType:
 		return true
 	default:
 		return false
@@ -253,7 +260,7 @@ func IsBuiltInType(t Type) bool {
 
 func IsBuiltInTypeByName(n string) bool {
 	switch n {
-	case "true", "bool", "int", "long", "int128", "int256", "string", "bytes":
+	case "true", "bool", "int", "long", "double", "int128", "int256", "string", "bytes":
 		return true
 	default:
 		return false
@@ -268,6 +275,8 @@ func MakeBuiltInType(n string) Type {
 		return IntType{}
 	case "long":
 		return LongType{}
+	case "double":
+		return DoubleType{}
 	case "int128":
 		return Int128Type{}
 	case "int256":

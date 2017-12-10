@@ -15,9 +15,6 @@ It is generated from these files:
 	schema.tl.transport_service.proto
 
 It has these top-level messages:
-	True_Data
-	True
-	TLTrue
 	Error_Data
 	Error
 	TLError
@@ -28,13 +25,9 @@ It has these top-level messages:
 	Bool
 	TLBoolFalse
 	TLBoolTrue
-	P_QInnerData_Data
-	P_QInnerData
-	TLPQInnerData
-	Server_DH_Params_Data
-	Server_DH_Params
-	TLServer_DHParamsFail
-	TLServer_DHParamsOk
+	True_Data
+	True
+	TLTrue
 	Server_DHInnerData_Data
 	Server_DHInnerData
 	TLServer_DHInnerData
@@ -54,441 +47,165 @@ It has these top-level messages:
 	ResPQ_Data
 	ResPQ
 	TLResPQ
+	P_QInnerData_Data
+	P_QInnerData
+	TLPQInnerData
+	Server_DH_Params_Data
+	Server_DH_Params
+	TLServer_DHParamsFail
+	TLServer_DHParamsOk
 	TLReqPq
 	TLReq_DHParams
 	TLSetClient_DHParams
 	TLDestroyAuthKey
-	Authorization_Data
-	Authorization
-	TLAuthorization
-	Message_Data
-	Message
-	TLMessageEmpty
-	TLMessage
-	TLMessageService
-	InputNotifyPeer_Data
-	InputNotifyPeer
-	TLInputNotifyPeer
-	TLInputNotifyUsers
-	TLInputNotifyChats
-	TLInputNotifyAll
-	ImportedContact_Data
-	ImportedContact
-	TLImportedContact
 	Messages_Messages_Data
 	Messages_Messages
 	TLMessagesMessages
 	TLMessagesMessagesSlice
 	TLMessagesChannelMessages
-	Updates_Difference_Data
-	Updates_Difference
-	TLUpdatesDifferenceEmpty
-	TLUpdatesDifference
-	TLUpdatesDifferenceSlice
-	TLUpdatesDifferenceTooLong
-	PrivacyKey_Data
-	PrivacyKey
-	TLPrivacyKeyStatusTimestamp
-	TLPrivacyKeyChatInvite
-	TLPrivacyKeyPhoneCall
-	DisabledFeature_Data
-	DisabledFeature
-	TLDisabledFeature
-	Messages_StickerSet_Data
-	Messages_StickerSet
-	TLMessagesStickerSet
-	ReplyMarkup_Data
-	ReplyMarkup
-	TLReplyKeyboardHide
-	TLReplyKeyboardForceReply
-	TLReplyKeyboardMarkup
-	TLReplyInlineMarkup
-	Messages_BotCallbackAnswer_Data
-	Messages_BotCallbackAnswer
-	TLMessagesBotCallbackAnswer
-	InputStickerSetItem_Data
-	InputStickerSetItem
-	TLInputStickerSetItem
-	ChannelAdminLogEvent_Data
-	ChannelAdminLogEvent
-	TLChannelAdminLogEvent
-	CdnFileHash_Data
-	CdnFileHash
-	TLCdnFileHash
-	InputUser_Data
-	InputUser
-	TLInputUserEmpty
-	TLInputUserSelf
-	TLInputUser
-	GeoPoint_Data
-	GeoPoint
-	TLGeoPointEmpty
-	TLGeoPoint
-	Contacts_Found_Data
-	Contacts_Found
-	TLContactsFound
-	MessageRange_Data
-	MessageRange
-	TLMessageRange
-	HighScore_Data
-	HighScore
-	TLHighScore
-	ShippingOption_Data
-	ShippingOption
-	TLShippingOption
-	ContactBlocked_Data
-	ContactBlocked
-	TLContactBlocked
-	Contacts_ResolvedPeer_Data
-	Contacts_ResolvedPeer
-	TLContactsResolvedPeer
-	Messages_FoundGifs_Data
-	Messages_FoundGifs
-	TLMessagesFoundGifs
-	InputStickeredMedia_Data
-	InputStickeredMedia
-	TLInputStickeredMediaPhoto
-	TLInputStickeredMediaDocument
-	Game_Data
-	Game
-	TLGame
-	LabeledPrice_Data
-	LabeledPrice
-	TLLabeledPrice
-	Payments_ValidatedRequestedInfo_Data
-	Payments_ValidatedRequestedInfo
-	TLPaymentsValidatedRequestedInfo
+	ChannelMessagesFilter_Data
+	ChannelMessagesFilter
+	TLChannelMessagesFilterEmpty
+	TLChannelMessagesFilter
+	InputGame_Data
+	InputGame
+	TLInputGameID
+	TLInputGameShortName
+	ChannelBannedRights_Data
+	ChannelBannedRights
+	TLChannelBannedRights
+	InputEncryptedFile_Data
+	InputEncryptedFile
+	TLInputEncryptedFileEmpty
+	TLInputEncryptedFileUploaded
+	TLInputEncryptedFile
+	TLInputEncryptedFileBigUploaded
 	NotifyPeer_Data
 	NotifyPeer
 	TLNotifyPeer
 	TLNotifyUsers
 	TLNotifyChats
 	TLNotifyAll
-	Account_Authorizations_Data
-	Account_Authorizations
-	TLAccountAuthorizations
-	BotInlineResult_Data
-	BotInlineResult
-	TLBotInlineResult
-	TLBotInlineMediaResult
-	PaymentCharge_Data
-	PaymentCharge
-	TLPaymentCharge
-	Upload_CdnFile_Data
-	Upload_CdnFile
-	TLUploadCdnFileReuploadNeeded
-	TLUploadCdnFile
-	Auth_CodeType_Data
-	Auth_CodeType
-	TLAuthCodeTypeSms
-	TLAuthCodeTypeCall
-	TLAuthCodeTypeFlashCall
-	InputContact_Data
-	InputContact
-	TLInputPhoneContact
-	Peer_Data
-	Peer
-	TLPeerUser
-	TLPeerChat
-	TLPeerChannel
-	FileLocation_Data
-	FileLocation
-	TLFileLocationUnavailable
-	TLFileLocation
-	Messages_AffectedHistory_Data
-	Messages_AffectedHistory
-	TLMessagesAffectedHistory
-	InputPrivacyKey_Data
-	InputPrivacyKey
-	TLInputPrivacyKeyStatusTimestamp
-	TLInputPrivacyKeyChatInvite
-	TLInputPrivacyKeyPhoneCall
-	StickerPack_Data
-	StickerPack
-	TLStickerPack
-	Updates_ChannelDifference_Data
-	Updates_ChannelDifference
-	TLUpdatesChannelDifferenceEmpty
-	TLUpdatesChannelDifferenceTooLong
-	TLUpdatesChannelDifference
-	Messages_MessageEditData_Data
-	Messages_MessageEditData
-	TLMessagesMessageEditData
-	TopPeerCategoryPeers_Data
-	TopPeerCategoryPeers
-	TLTopPeerCategoryPeers
-	PaymentSavedCredentials_Data
-	PaymentSavedCredentials
-	TLPaymentSavedCredentialsCard
-	Page_Data
-	Page
-	TLPagePart
-	TLPageFull
+	StickerSet_Data
+	StickerSet
+	TLStickerSet
+	Messages_FeaturedStickers_Data
+	Messages_FeaturedStickers
+	TLMessagesFeaturedStickersNotModified
+	TLMessagesFeaturedStickers
+	PaymentRequestedInfo_Data
+	PaymentRequestedInfo
+	TLPaymentRequestedInfo
+	LangPackString_Data
+	LangPackString
+	TLLangPackString
+	TLLangPackStringPluralized
+	TLLangPackStringDeleted
 	ChatParticipants_Data
 	ChatParticipants
 	TLChatParticipantsForbidden
 	TLChatParticipants
-	Contact_Data
-	Contact
-	TLContact
-	Help_InviteText_Data
-	Help_InviteText
-	TLHelpInviteText
-	InputPrivacyRule_Data
-	InputPrivacyRule
-	TLInputPrivacyValueAllowContacts
-	TLInputPrivacyValueAllowAll
-	TLInputPrivacyValueAllowUsers
-	TLInputPrivacyValueDisallowContacts
-	TLInputPrivacyValueDisallowAll
-	TLInputPrivacyValueDisallowUsers
-	InputChannel_Data
-	InputChannel
-	TLInputChannelEmpty
-	TLInputChannel
-	ChannelParticipantsFilter_Data
-	ChannelParticipantsFilter
-	TLChannelParticipantsRecent
-	TLChannelParticipantsAdmins
-	TLChannelParticipantsKicked
-	TLChannelParticipantsBots
-	TLChannelParticipantsBanned
-	TLChannelParticipantsSearch
-	InputBotInlineMessageID_Data
-	InputBotInlineMessageID
-	TLInputBotInlineMessageID
-	Payments_PaymentResult_Data
-	Payments_PaymentResult
-	TLPaymentsPaymentResult
-	TLPaymentsPaymentVerficationNeeded
-	CdnConfig_Data
-	CdnConfig
-	TLCdnConfig
-	ChannelAdminLogEventAction_Data
-	ChannelAdminLogEventAction
-	TLChannelAdminLogEventActionChangeTitle
-	TLChannelAdminLogEventActionChangeAbout
-	TLChannelAdminLogEventActionChangeUsername
-	TLChannelAdminLogEventActionChangePhoto
-	TLChannelAdminLogEventActionToggleInvites
-	TLChannelAdminLogEventActionToggleSignatures
-	TLChannelAdminLogEventActionUpdatePinned
-	TLChannelAdminLogEventActionEditMessage
-	TLChannelAdminLogEventActionDeleteMessage
-	TLChannelAdminLogEventActionParticipantJoin
-	TLChannelAdminLogEventActionParticipantLeave
-	TLChannelAdminLogEventActionParticipantInvite
-	TLChannelAdminLogEventActionParticipantToggleBan
-	TLChannelAdminLogEventActionParticipantToggleAdmin
-	TLChannelAdminLogEventActionChangeStickerSet
-	ChannelBannedRights_Data
-	ChannelBannedRights
-	TLChannelBannedRights
-	Channels_ChannelParticipants_Data
-	Channels_ChannelParticipants
-	TLChannelsChannelParticipants
-	BotInlineMessage_Data
-	BotInlineMessage
-	TLBotInlineMessageMediaAuto
-	TLBotInlineMessageText
-	TLBotInlineMessageMediaGeo
-	TLBotInlineMessageMediaVenue
-	TLBotInlineMessageMediaContact
-	ExportedMessageLink_Data
-	ExportedMessageLink
-	TLExportedMessageLink
-	Messages_PeerDialogs_Data
-	Messages_PeerDialogs
-	TLMessagesPeerDialogs
-	Messages_ArchivedStickers_Data
-	Messages_ArchivedStickers
-	TLMessagesArchivedStickers
-	InputWebDocument_Data
-	InputWebDocument
-	TLInputWebDocument
-	InputWebFileLocation_Data
-	InputWebFileLocation
-	TLInputWebFileLocation
-	InputFileLocation_Data
-	InputFileLocation
-	TLInputFileLocation
-	TLInputEncryptedFileLocation
-	TLInputDocumentFileLocation
+	Messages_AffectedHistory_Data
+	Messages_AffectedHistory
+	TLMessagesAffectedHistory
+	PrivacyKey_Data
+	PrivacyKey
+	TLPrivacyKeyStatusTimestamp
+	TLPrivacyKeyChatInvite
+	TLPrivacyKeyPhoneCall
+	Messages_Stickers_Data
+	Messages_Stickers
+	TLMessagesStickersNotModified
+	TLMessagesStickers
+	Messages_FoundGifs_Data
+	Messages_FoundGifs
+	TLMessagesFoundGifs
+	DraftMessage_Data
+	DraftMessage
+	TLDraftMessageEmpty
+	TLDraftMessage
+	InputFile_Data
+	InputFile
+	TLInputFile
+	TLInputFileBig
+	InputMedia_Data
+	InputMedia
+	TLInputMediaEmpty
+	TLInputMediaUploadedPhoto
+	TLInputMediaPhoto
+	TLInputMediaGeoPoint
+	TLInputMediaContact
+	TLInputMediaUploadedDocument
+	TLInputMediaDocument
+	TLInputMediaVenue
+	TLInputMediaGifExternal
+	TLInputMediaPhotoExternal
+	TLInputMediaDocumentExternal
+	TLInputMediaGame
+	TLInputMediaInvoice
+	User_Data
+	User
+	TLUserEmpty
+	TLUser
+	ChatPhoto_Data
+	ChatPhoto
+	TLChatPhotoEmpty
+	TLChatPhoto
 	PhotoSize_Data
 	PhotoSize
 	TLPhotoSizeEmpty
 	TLPhotoSize
 	TLPhotoCachedSize
-	PeerNotifySettings_Data
-	PeerNotifySettings
-	TLPeerNotifySettingsEmpty
-	TLPeerNotifySettings
+	Contacts_Contacts_Data
+	Contacts_Contacts
+	TLContactsContactsNotModified
+	TLContactsContacts
+	Contacts_Blocked_Data
+	Contacts_Blocked
+	TLContactsBlocked
+	TLContactsBlockedSlice
+	Messages_HighScores_Data
+	Messages_HighScores
+	TLMessagesHighScores
+	CdnPublicKey_Data
+	CdnPublicKey
+	TLCdnPublicKey
+	LangPackDifference_Data
+	LangPackDifference
+	TLLangPackDifference
+	ContactStatus_Data
+	ContactStatus
+	TLContactStatus
+	FoundGif_Data
+	FoundGif
+	TLFoundGif
+	TLFoundGifCached
+	Messages_BotCallbackAnswer_Data
+	Messages_BotCallbackAnswer
+	TLMessagesBotCallbackAnswer
+	TopPeerCategoryPeers_Data
+	TopPeerCategoryPeers
+	TLTopPeerCategoryPeers
+	Messages_RecentStickers_Data
+	Messages_RecentStickers
+	TLMessagesRecentStickersNotModified
+	TLMessagesRecentStickers
+	PaymentSavedCredentials_Data
+	PaymentSavedCredentials
+	TLPaymentSavedCredentialsCard
+	Account_TmpPassword_Data
+	Account_TmpPassword
+	TLAccountTmpPassword
 	Messages_DhConfig_Data
 	Messages_DhConfig
 	TLMessagesDhConfigNotModified
 	TLMessagesDhConfig
-	ChannelParticipant_Data
-	ChannelParticipant
-	TLChannelParticipant
-	TLChannelParticipantSelf
-	TLChannelParticipantCreator
-	TLChannelParticipantAdmin
-	TLChannelParticipantBanned
-	ChannelAdminRights_Data
-	ChannelAdminRights
-	TLChannelAdminRights
-	ChatInvite_Data
-	ChatInvite
-	TLChatInviteAlready
-	TLChatInvite
-	InputPhoto_Data
-	InputPhoto
-	TLInputPhotoEmpty
-	TLInputPhoto
-	UserStatus_Data
-	UserStatus
-	TLUserStatusEmpty
-	TLUserStatusOnline
-	TLUserStatusOffline
-	TLUserStatusRecently
-	TLUserStatusLastWeek
-	TLUserStatusLastMonth
-	ChatFull_Data
-	ChatFull
-	TLChatFull
-	TLChannelFull
-	Auth_Authorization_Data
-	Auth_Authorization
-	TLAuthAuthorization
-	Photos_Photos_Data
-	Photos_Photos
-	TLPhotosPhotos
-	TLPhotosPhotosSlice
-	Messages_Stickers_Data
-	Messages_Stickers
-	TLMessagesStickersNotModified
-	TLMessagesStickers
-	Auth_PasswordRecovery_Data
-	Auth_PasswordRecovery
-	TLAuthPasswordRecovery
-	InputAppEvent_Data
-	InputAppEvent
-	TLInputAppEvent
-	ReceivedNotifyMessage_Data
-	ReceivedNotifyMessage
-	TLReceivedNotifyMessage
-	ExportedChatInvite_Data
-	ExportedChatInvite
-	TLChatInviteEmpty
-	TLChatInviteExported
-	MessageEntity_Data
-	MessageEntity
-	TLMessageEntityUnknown
-	TLMessageEntityMention
-	TLMessageEntityHashtag
-	TLMessageEntityBotCommand
-	TLMessageEntityUrl
-	TLMessageEntityEmail
-	TLMessageEntityBold
-	TLMessageEntityItalic
-	TLMessageEntityCode
-	TLMessageEntityPre
-	TLMessageEntityTextUrl
-	TLMessageEntityMentionName
-	TLInputMessageEntityMentionName
-	InputGame_Data
-	InputGame
-	TLInputGameID
-	TLInputGameShortName
-	CdnPublicKey_Data
-	CdnPublicKey
-	TLCdnPublicKey
-	Payments_PaymentReceipt_Data
-	Payments_PaymentReceipt
-	TLPaymentsPaymentReceipt
-	MessagesFilter_Data
-	MessagesFilter
-	TLInputMessagesFilterEmpty
-	TLInputMessagesFilterPhotos
-	TLInputMessagesFilterVideo
-	TLInputMessagesFilterPhotoVideo
-	TLInputMessagesFilterPhotoVideoDocuments
-	TLInputMessagesFilterDocument
-	TLInputMessagesFilterUrl
-	TLInputMessagesFilterGif
-	TLInputMessagesFilterVoice
-	TLInputMessagesFilterMusic
-	TLInputMessagesFilterChatPhotos
-	TLInputMessagesFilterPhoneCalls
-	TLInputMessagesFilterRoundVoice
-	TLInputMessagesFilterRoundVideo
-	TLInputMessagesFilterMyMentions
-	Help_Support_Data
-	Help_Support
-	TLHelpSupport
-	ContactLink_Data
-	ContactLink
-	TLContactLinkUnknown
-	TLContactLinkNone
-	TLContactLinkHasPhone
-	TLContactLinkContact
-	WebPage_Data
-	WebPage
-	TLWebPageEmpty
-	TLWebPagePending
-	TLWebPage
-	TLWebPageNotModified
-	Help_TermsOfService_Data
-	Help_TermsOfService
-	TLHelpTermsOfService
-	InputBotInlineMessage_Data
-	InputBotInlineMessage
-	TLInputBotInlineMessageMediaAuto
-	TLInputBotInlineMessageText
-	TLInputBotInlineMessageMediaGeo
-	TLInputBotInlineMessageMediaVenue
-	TLInputBotInlineMessageMediaContact
-	TLInputBotInlineMessageGame
-	PageBlock_Data
-	PageBlock
-	TLPageBlockUnsupported
-	TLPageBlockTitle
-	TLPageBlockSubtitle
-	TLPageBlockAuthorDate
-	TLPageBlockHeader
-	TLPageBlockSubheader
-	TLPageBlockParagraph
-	TLPageBlockPreformatted
-	TLPageBlockFooter
-	TLPageBlockDivider
-	TLPageBlockAnchor
-	TLPageBlockList
-	TLPageBlockBlockquote
-	TLPageBlockPullquote
-	TLPageBlockPhoto
-	TLPageBlockVideo
-	TLPageBlockCover
-	TLPageBlockEmbed
-	TLPageBlockEmbedPost
-	TLPageBlockCollage
-	TLPageBlockSlideshow
-	TLPageBlockChannel
-	TLPageBlockAudio
-	PostAddress_Data
-	PostAddress
-	TLPostAddress
-	Storage_FileType_Data
-	Storage_FileType
-	TLStorageFileUnknown
-	TLStorageFilePartial
-	TLStorageFileJpeg
-	TLStorageFileGif
-	TLStorageFilePng
-	TLStorageFilePdf
-	TLStorageFileMp3
-	TLStorageFileMov
-	TLStorageFileMp4
-	TLStorageFileWebp
+	Auth_SentCodeType_Data
+	Auth_SentCodeType
+	TLAuthSentCodeTypeApp
+	TLAuthSentCodeTypeSms
+	TLAuthSentCodeTypeCall
+	TLAuthSentCodeTypeFlashCall
 	Update_Data
 	Update
 	TLUpdateNewMessage
@@ -556,201 +273,76 @@ It has these top-level messages:
 	TLUpdateFavedStickers
 	TLUpdateChannelReadMessagesContents
 	TLUpdateContactsReset
-	SendMessageAction_Data
-	SendMessageAction
-	TLSendMessageTypingAction
-	TLSendMessageCancelAction
-	TLSendMessageRecordVideoAction
-	TLSendMessageUploadVideoAction
-	TLSendMessageRecordAudioAction
-	TLSendMessageUploadAudioAction
-	TLSendMessageUploadPhotoAction
-	TLSendMessageUploadDocumentAction
-	TLSendMessageGeoLocationAction
-	TLSendMessageChooseContactAction
-	TLSendMessageGamePlayAction
-	TLSendMessageRecordRoundAction
-	TLSendMessageUploadRoundAction
-	BotCommand_Data
-	BotCommand
-	TLBotCommand
-	Messages_SavedGifs_Data
-	Messages_SavedGifs
-	TLMessagesSavedGifsNotModified
-	TLMessagesSavedGifs
-	TopPeerCategory_Data
-	TopPeerCategory
-	TLTopPeerCategoryBotsPM
-	TLTopPeerCategoryBotsInline
-	TLTopPeerCategoryCorrespondents
-	TLTopPeerCategoryGroups
-	TLTopPeerCategoryChannels
-	TLTopPeerCategoryPhoneCalls
+	InputBotInlineMessage_Data
+	InputBotInlineMessage
+	TLInputBotInlineMessageMediaAuto
+	TLInputBotInlineMessageText
+	TLInputBotInlineMessageMediaGeo
+	TLInputBotInlineMessageMediaVenue
+	TLInputBotInlineMessageMediaContact
+	TLInputBotInlineMessageGame
 	Contacts_TopPeers_Data
 	Contacts_TopPeers
 	TLContactsTopPeersNotModified
 	TLContactsTopPeers
-	PaymentRequestedInfo_Data
-	PaymentRequestedInfo
-	TLPaymentRequestedInfo
-	PhoneConnection_Data
-	PhoneConnection
-	TLPhoneConnection
-	Messages_FavedStickers_Data
-	Messages_FavedStickers
-	TLMessagesFavedStickersNotModified
-	TLMessagesFavedStickers
-	Payments_SavedInfo_Data
-	Payments_SavedInfo
-	TLPaymentsSavedInfo
-	InputPeerNotifyEvents_Data
-	InputPeerNotifyEvents
-	TLInputPeerNotifyEventsEmpty
-	TLInputPeerNotifyEventsAll
-	Messages_Chats_Data
-	Messages_Chats
-	TLMessagesChats
-	TLMessagesChatsSlice
-	InputDocument_Data
-	InputDocument
-	TLInputDocumentEmpty
-	TLInputDocument
-	DocumentAttribute_Data
-	DocumentAttribute
-	TLDocumentAttributeImageSize
-	TLDocumentAttributeAnimated
-	TLDocumentAttributeSticker
-	TLDocumentAttributeVideo
-	TLDocumentAttributeAudio
-	TLDocumentAttributeFilename
-	TLDocumentAttributeHasStickers
-	Messages_AllStickers_Data
-	Messages_AllStickers
-	TLMessagesAllStickersNotModified
-	TLMessagesAllStickers
-	InlineBotSwitchPM_Data
-	InlineBotSwitchPM
-	TLInlineBotSwitchPM
-	Upload_WebFile_Data
-	Upload_WebFile
-	TLUploadWebFile
-	Account_TmpPassword_Data
-	Account_TmpPassword
-	TLAccountTmpPassword
-	Messages_FeaturedStickers_Data
-	Messages_FeaturedStickers
-	TLMessagesFeaturedStickersNotModified
-	TLMessagesFeaturedStickers
-	InputFile_Data
-	InputFile
-	TLInputFile
-	TLInputFileBig
-	UserFull_Data
-	UserFull
-	TLUserFull
-	Contacts_Contacts_Data
-	Contacts_Contacts
-	TLContactsContactsNotModified
-	TLContactsContacts
-	NearestDc_Data
-	NearestDc
-	TLNearestDc
-	InputStickerSet_Data
-	InputStickerSet
-	TLInputStickerSetEmpty
-	TLInputStickerSetID
-	TLInputStickerSetShortName
-	Messages_BotResults_Data
-	Messages_BotResults
-	TLMessagesBotResults
-	DraftMessage_Data
-	DraftMessage
-	TLDraftMessageEmpty
-	TLDraftMessage
-	PeerNotifyEvents_Data
-	PeerNotifyEvents
-	TLPeerNotifyEventsEmpty
-	TLPeerNotifyEventsAll
-	PeerSettings_Data
-	PeerSettings
-	TLPeerSettings
-	Messages_AffectedMessages_Data
-	Messages_AffectedMessages
-	TLMessagesAffectedMessages
-	Account_PasswordSettings_Data
-	Account_PasswordSettings
-	TLAccountPasswordSettings
-	LangPackDifference_Data
-	LangPackDifference
-	TLLangPackDifference
-	Document_Data
-	Document
-	TLDocumentEmpty
-	TLDocument
-	InputPeer_Data
-	InputPeer
-	TLInputPeerEmpty
-	TLInputPeerSelf
-	TLInputPeerChat
-	TLInputPeerUser
-	TLInputPeerChannel
-	Auth_SentCode_Data
-	Auth_SentCode
-	TLAuthSentCode
-	WallPaper_Data
-	WallPaper
-	TLWallPaper
-	TLWallPaperSolid
-	Messages_ChatFull_Data
-	Messages_ChatFull
-	TLMessagesChatFull
-	Photos_Photo_Data
-	Photos_Photo
-	TLPhotosPhoto
-	EncryptedFile_Data
-	EncryptedFile
-	TLEncryptedFileEmpty
-	TLEncryptedFile
-	InputEncryptedFile_Data
-	InputEncryptedFile
-	TLInputEncryptedFileEmpty
-	TLInputEncryptedFileUploaded
-	TLInputEncryptedFile
-	TLInputEncryptedFileBigUploaded
+	MaskCoords_Data
+	MaskCoords
+	TLMaskCoords
 	PhoneCallDiscardReason_Data
 	PhoneCallDiscardReason
 	TLPhoneCallDiscardReasonMissed
 	TLPhoneCallDiscardReasonDisconnect
 	TLPhoneCallDiscardReasonHangup
 	TLPhoneCallDiscardReasonBusy
-	PopularContact_Data
-	PopularContact
-	TLPopularContact
-	ChatParticipant_Data
-	ChatParticipant
-	TLChatParticipant
-	TLChatParticipantCreator
-	TLChatParticipantAdmin
-	Contacts_Link_Data
-	Contacts_Link
-	TLContactsLink
-	PrivacyRule_Data
-	PrivacyRule
-	TLPrivacyValueAllowContacts
-	TLPrivacyValueAllowAll
-	TLPrivacyValueAllowUsers
-	TLPrivacyValueDisallowContacts
-	TLPrivacyValueDisallowAll
-	TLPrivacyValueDisallowUsers
-	MessageFwdHeader_Data
-	MessageFwdHeader
-	TLMessageFwdHeader
-	Phone_PhoneCall_Data
-	Phone_PhoneCall
-	TLPhonePhoneCall
-	Channels_AdminLogResults_Data
-	Channels_AdminLogResults
-	TLChannelsAdminLogResults
+	ShippingOption_Data
+	ShippingOption
+	TLShippingOption
+	ChannelAdminLogEvent_Data
+	ChannelAdminLogEvent
+	TLChannelAdminLogEvent
+	InputChatPhoto_Data
+	InputChatPhoto
+	TLInputChatPhotoEmpty
+	TLInputChatUploadedPhoto
+	TLInputChatPhoto
+	Contact_Data
+	Contact
+	TLContact
+	Account_Password_Data
+	Account_Password
+	TLAccountNoPassword
+	TLAccountPassword
+	Messages_StickerSet_Data
+	Messages_StickerSet
+	TLMessagesStickerSet
+	InputStickeredMedia_Data
+	InputStickeredMedia
+	TLInputStickeredMediaPhoto
+	TLInputStickeredMediaDocument
+	ChannelAdminLogEventAction_Data
+	ChannelAdminLogEventAction
+	TLChannelAdminLogEventActionChangeTitle
+	TLChannelAdminLogEventActionChangeAbout
+	TLChannelAdminLogEventActionChangeUsername
+	TLChannelAdminLogEventActionChangePhoto
+	TLChannelAdminLogEventActionToggleInvites
+	TLChannelAdminLogEventActionToggleSignatures
+	TLChannelAdminLogEventActionUpdatePinned
+	TLChannelAdminLogEventActionEditMessage
+	TLChannelAdminLogEventActionDeleteMessage
+	TLChannelAdminLogEventActionParticipantJoin
+	TLChannelAdminLogEventActionParticipantLeave
+	TLChannelAdminLogEventActionParticipantInvite
+	TLChannelAdminLogEventActionParticipantToggleBan
+	TLChannelAdminLogEventActionParticipantToggleAdmin
+	TLChannelAdminLogEventActionChangeStickerSet
+	Chat_Data
+	Chat
+	TLChatEmpty
+	TLChat
+	TLChatForbidden
+	TLChannel
+	TLChannelForbidden
 	MessageAction_Data
 	MessageAction
 	TLMessageActionEmpty
@@ -771,170 +363,89 @@ It has these top-level messages:
 	TLMessageActionPaymentSent
 	TLMessageActionPhoneCall
 	TLMessageActionScreenshotTaken
+	ChannelParticipant_Data
+	ChannelParticipant
+	TLChannelParticipant
+	TLChannelParticipantSelf
+	TLChannelParticipantCreator
+	TLChannelParticipantAdmin
+	TLChannelParticipantBanned
+	TopPeer_Data
+	TopPeer
+	TLTopPeer
+	InputWebDocument_Data
+	InputWebDocument
+	TLInputWebDocument
+	UserProfilePhoto_Data
+	UserProfilePhoto
+	TLUserProfilePhotoEmpty
+	TLUserProfilePhoto
+	UserFull_Data
+	UserFull
+	TLUserFull
+	NearestDc_Data
+	NearestDc
+	TLNearestDc
+	InputPrivacyRule_Data
+	InputPrivacyRule
+	TLInputPrivacyValueAllowContacts
+	TLInputPrivacyValueAllowAll
+	TLInputPrivacyValueAllowUsers
+	TLInputPrivacyValueDisallowContacts
+	TLInputPrivacyValueDisallowAll
+	TLInputPrivacyValueDisallowUsers
+	InputStickerSetItem_Data
+	InputStickerSetItem
+	TLInputStickerSetItem
+	StickerSetCovered_Data
+	StickerSetCovered
+	TLStickerSetCovered
+	TLStickerSetMultiCovered
+	FileLocation_Data
+	FileLocation
+	TLFileLocationUnavailable
+	TLFileLocation
+	ChatParticipant_Data
+	ChatParticipant
+	TLChatParticipant
+	TLChatParticipantCreator
+	TLChatParticipantAdmin
+	Auth_SentCode_Data
+	Auth_SentCode
+	TLAuthSentCode
+	Contacts_Found_Data
+	Contacts_Found
+	TLContactsFound
+	ReceivedNotifyMessage_Data
+	ReceivedNotifyMessage
+	TLReceivedNotifyMessage
+	MessageEntity_Data
+	MessageEntity
+	TLMessageEntityUnknown
+	TLMessageEntityMention
+	TLMessageEntityHashtag
+	TLMessageEntityBotCommand
+	TLMessageEntityUrl
+	TLMessageEntityEmail
+	TLMessageEntityBold
+	TLMessageEntityItalic
+	TLMessageEntityCode
+	TLMessageEntityPre
+	TLMessageEntityTextUrl
+	TLMessageEntityMentionName
+	TLInputMessageEntityMentionName
 	InputBotInlineResult_Data
 	InputBotInlineResult
 	TLInputBotInlineResult
 	TLInputBotInlineResultPhoto
 	TLInputBotInlineResultDocument
 	TLInputBotInlineResultGame
-	Auth_SentCodeType_Data
-	Auth_SentCodeType
-	TLAuthSentCodeTypeApp
-	TLAuthSentCodeTypeSms
-	TLAuthSentCodeTypeCall
-	TLAuthSentCodeTypeFlashCall
-	PhoneCall_Data
-	PhoneCall
-	TLPhoneCallEmpty
-	TLPhoneCallWaiting
-	TLPhoneCallRequested
-	TLPhoneCallAccepted
-	TLPhoneCall
-	TLPhoneCallDiscarded
-	ChannelAdminLogEventsFilter_Data
-	ChannelAdminLogEventsFilter
-	TLChannelAdminLogEventsFilter
-	Photo_Data
-	Photo
-	TLPhotoEmpty
-	TLPhoto
-	Messages_SentEncryptedMessage_Data
-	Messages_SentEncryptedMessage
-	TLMessagesSentEncryptedMessage
-	TLMessagesSentEncryptedFile
-	KeyboardButtonRow_Data
-	KeyboardButtonRow
-	TLKeyboardButtonRow
-	MaskCoords_Data
-	MaskCoords
-	TLMaskCoords
-	InputMedia_Data
-	InputMedia
-	TLInputMediaEmpty
-	TLInputMediaUploadedPhoto
-	TLInputMediaPhoto
-	TLInputMediaGeoPoint
-	TLInputMediaContact
-	TLInputMediaUploadedDocument
-	TLInputMediaDocument
-	TLInputMediaVenue
-	TLInputMediaGifExternal
-	TLInputMediaPhotoExternal
-	TLInputMediaDocumentExternal
-	TLInputMediaGame
-	TLInputMediaInvoice
-	Dialog_Data
-	Dialog
-	TLDialog
-	InputPeerNotifySettings_Data
-	InputPeerNotifySettings
-	TLInputPeerNotifySettings
-	ChannelMessagesFilter_Data
-	ChannelMessagesFilter
-	TLChannelMessagesFilterEmpty
-	TLChannelMessagesFilter
-	PhoneCallProtocol_Data
-	PhoneCallProtocol
-	TLPhoneCallProtocol
-	LangPackLanguage_Data
-	LangPackLanguage
-	TLLangPackLanguage
-	User_Data
-	User
-	TLUserEmpty
-	TLUser
-	EncryptedMessage_Data
-	EncryptedMessage
-	TLEncryptedMessage
-	TLEncryptedMessageService
-	Messages_RecentStickers_Data
-	Messages_RecentStickers
-	TLMessagesRecentStickersNotModified
-	TLMessagesRecentStickers
-	InputPaymentCredentials_Data
-	InputPaymentCredentials
-	TLInputPaymentCredentialsSaved
-	TLInputPaymentCredentials
-	InputGeoPoint_Data
-	InputGeoPoint
-	TLInputGeoPointEmpty
-	TLInputGeoPoint
-	StickerSet_Data
-	StickerSet
-	TLStickerSet
-	Channels_ChannelParticipant_Data
-	Channels_ChannelParticipant
-	TLChannelsChannelParticipant
-	RichText_Data
-	RichText
-	TLTextEmpty
-	TLTextPlain
-	TLTextBold
-	TLTextItalic
-	TLTextUnderline
-	TLTextStrike
-	TLTextFixed
-	TLTextUrl
-	TLTextEmail
-	TLTextConcat
-	Contacts_ImportedContacts_Data
-	Contacts_ImportedContacts
-	TLContactsImportedContacts
-	Upload_File_Data
-	Upload_File
-	TLUploadFile
-	TLUploadFileCdnRedirect
-	EncryptedChat_Data
-	EncryptedChat
-	TLEncryptedChatEmpty
-	TLEncryptedChatWaiting
-	TLEncryptedChatRequested
-	TLEncryptedChat
-	TLEncryptedChatDiscarded
-	Account_PrivacyRules_Data
-	Account_PrivacyRules
-	TLAccountPrivacyRules
-	Messages_HighScores_Data
-	Messages_HighScores
-	TLMessagesHighScores
-	ReportReason_Data
-	ReportReason
-	TLInputReportReasonSpam
-	TLInputReportReasonViolence
-	TLInputReportReasonPornography
-	TLInputReportReasonOther
-	Contacts_Blocked_Data
-	Contacts_Blocked
-	TLContactsBlocked
-	TLContactsBlockedSlice
-	DcOption_Data
-	DcOption
-	TLDcOption
-	TopPeer_Data
-	TopPeer
-	TLTopPeer
-	UserProfilePhoto_Data
-	UserProfilePhoto
-	TLUserProfilePhotoEmpty
-	TLUserProfilePhoto
-	InputEncryptedChat_Data
-	InputEncryptedChat
-	TLInputEncryptedChat
-	Account_Password_Data
-	Account_Password
-	TLAccountNoPassword
-	TLAccountPassword
-	Chat_Data
-	Chat
-	TLChatEmpty
-	TLChat
-	TLChatForbidden
-	TLChannel
-	TLChannelForbidden
-	Messages_Dialogs_Data
-	Messages_Dialogs
-	TLMessagesDialogs
-	TLMessagesDialogsSlice
+	Photos_Photo_Data
+	Photos_Photo
+	TLPhotosPhoto
+	Config_Data
+	Config
+	TLConfig
 	KeyboardButton_Data
 	KeyboardButton
 	TLKeyboardButton
@@ -945,13 +456,22 @@ It has these top-level messages:
 	TLKeyboardButtonSwitchInline
 	TLKeyboardButtonGame
 	TLKeyboardButtonBuy
-	InputPhoneCall_Data
-	InputPhoneCall
-	TLInputPhoneCall
-	ChatPhoto_Data
-	ChatPhoto
-	TLChatPhotoEmpty
-	TLChatPhoto
+	Channels_ChannelParticipant_Data
+	Channels_ChannelParticipant
+	TLChannelsChannelParticipant
+	InputWebFileLocation_Data
+	InputWebFileLocation
+	TLInputWebFileLocation
+	PhoneCallProtocol_Data
+	PhoneCallProtocol
+	TLPhoneCallProtocol
+	CdnFileHash_Data
+	CdnFileHash
+	TLCdnFileHash
+	ChatInvite_Data
+	ChatInvite
+	TLChatInviteAlready
+	TLChatInvite
 	MessageMedia_Data
 	MessageMedia
 	TLMessageMediaEmpty
@@ -964,29 +484,312 @@ It has these top-level messages:
 	TLMessageMediaVenue
 	TLMessageMediaGame
 	TLMessageMediaInvoice
-	Auth_CheckedPhone_Data
-	Auth_CheckedPhone
-	TLAuthCheckedPhone
-	Updates_State_Data
-	Updates_State
-	TLUpdatesState
-	Account_PasswordInputSettings_Data
-	Account_PasswordInputSettings
-	TLAccountPasswordInputSettings
+	InputPeerNotifyEvents_Data
+	InputPeerNotifyEvents
+	TLInputPeerNotifyEventsEmpty
+	TLInputPeerNotifyEventsAll
+	PeerNotifySettings_Data
+	PeerNotifySettings
+	TLPeerNotifySettingsEmpty
+	TLPeerNotifySettings
+	Contacts_Link_Data
+	Contacts_Link
+	TLContactsLink
+	Updates_Difference_Data
+	Updates_Difference
+	TLUpdatesDifferenceEmpty
+	TLUpdatesDifference
+	TLUpdatesDifferenceSlice
+	TLUpdatesDifferenceTooLong
+	Help_InviteText_Data
+	Help_InviteText
+	TLHelpInviteText
+	SendMessageAction_Data
+	SendMessageAction
+	TLSendMessageTypingAction
+	TLSendMessageCancelAction
+	TLSendMessageRecordVideoAction
+	TLSendMessageUploadVideoAction
+	TLSendMessageRecordAudioAction
+	TLSendMessageUploadAudioAction
+	TLSendMessageUploadPhotoAction
+	TLSendMessageUploadDocumentAction
+	TLSendMessageGeoLocationAction
+	TLSendMessageChooseContactAction
+	TLSendMessageGamePlayAction
+	TLSendMessageRecordRoundAction
+	TLSendMessageUploadRoundAction
+	InputChannel_Data
+	InputChannel
+	TLInputChannelEmpty
+	TLInputChannel
+	Messages_MessageEditData_Data
+	Messages_MessageEditData
+	TLMessagesMessageEditData
+	PhoneCall_Data
+	PhoneCall
+	TLPhoneCallEmpty
+	TLPhoneCallWaiting
+	TLPhoneCallRequested
+	TLPhoneCallAccepted
+	TLPhoneCall
+	TLPhoneCallDiscarded
+	PostAddress_Data
+	PostAddress
+	TLPostAddress
+	InputFileLocation_Data
+	InputFileLocation
+	TLInputFileLocation
+	TLInputEncryptedFileLocation
+	TLInputDocumentFileLocation
+	Peer_Data
+	Peer
+	TLPeerUser
+	TLPeerChat
+	TLPeerChannel
+	InputNotifyPeer_Data
+	InputNotifyPeer
+	TLInputNotifyPeer
+	TLInputNotifyUsers
+	TLInputNotifyChats
+	TLInputNotifyAll
+	BotCommand_Data
+	BotCommand
+	TLBotCommand
+	BotInlineMessage_Data
+	BotInlineMessage
+	TLBotInlineMessageMediaAuto
+	TLBotInlineMessageText
+	TLBotInlineMessageMediaGeo
+	TLBotInlineMessageMediaVenue
+	TLBotInlineMessageMediaContact
+	Messages_StickerSetInstallResult_Data
+	Messages_StickerSetInstallResult
+	TLMessagesStickerSetInstallResultSuccess
+	TLMessagesStickerSetInstallResultArchive
+	LabeledPrice_Data
+	LabeledPrice
+	TLLabeledPrice
+	InputPeer_Data
+	InputPeer
+	TLInputPeerEmpty
+	TLInputPeerSelf
+	TLInputPeerChat
+	TLInputPeerUser
+	TLInputPeerChannel
+	Photo_Data
+	Photo
+	TLPhotoEmpty
+	TLPhoto
+	ContactBlocked_Data
+	ContactBlocked
+	TLContactBlocked
+	DcOption_Data
+	DcOption
+	TLDcOption
+	Messages_SentEncryptedMessage_Data
+	Messages_SentEncryptedMessage
+	TLMessagesSentEncryptedMessage
+	TLMessagesSentEncryptedFile
+	Account_PasswordSettings_Data
+	Account_PasswordSettings
+	TLAccountPasswordSettings
+	Messages_BotResults_Data
+	Messages_BotResults
+	TLMessagesBotResults
+	DataJSON_Data
+	DataJSON
+	TLDataJSON
+	Payments_ValidatedRequestedInfo_Data
+	Payments_ValidatedRequestedInfo
+	TLPaymentsValidatedRequestedInfo
+	Payments_PaymentReceipt_Data
+	Payments_PaymentReceipt
+	TLPaymentsPaymentReceipt
+	InputEncryptedChat_Data
+	InputEncryptedChat
+	TLInputEncryptedChat
 	BotInfo_Data
 	BotInfo
 	TLBotInfo
 	Invoice_Data
 	Invoice
 	TLInvoice
-	InputChatPhoto_Data
-	InputChatPhoto
-	TLInputChatPhotoEmpty
-	TLInputChatUploadedPhoto
-	TLInputChatPhoto
-	ContactStatus_Data
-	ContactStatus
-	TLContactStatus
+	InputPhoneCall_Data
+	InputPhoneCall
+	TLInputPhoneCall
+	Auth_Authorization_Data
+	Auth_Authorization
+	TLAuthAuthorization
+	Photos_Photos_Data
+	Photos_Photos
+	TLPhotosPhotos
+	TLPhotosPhotosSlice
+	DisabledFeature_Data
+	DisabledFeature
+	TLDisabledFeature
+	InlineBotSwitchPM_Data
+	InlineBotSwitchPM
+	TLInlineBotSwitchPM
+	Payments_PaymentResult_Data
+	Payments_PaymentResult
+	TLPaymentsPaymentResult
+	TLPaymentsPaymentVerficationNeeded
+	ChannelAdminLogEventsFilter_Data
+	ChannelAdminLogEventsFilter
+	TLChannelAdminLogEventsFilter
+	InputContact_Data
+	InputContact
+	TLInputPhoneContact
+	Messages_Chats_Data
+	Messages_Chats
+	TLMessagesChats
+	TLMessagesChatsSlice
+	InputPrivacyKey_Data
+	InputPrivacyKey
+	TLInputPrivacyKeyStatusTimestamp
+	TLInputPrivacyKeyChatInvite
+	TLInputPrivacyKeyPhoneCall
+	Messages_AffectedMessages_Data
+	Messages_AffectedMessages
+	TLMessagesAffectedMessages
+	Messages_SavedGifs_Data
+	Messages_SavedGifs
+	TLMessagesSavedGifsNotModified
+	TLMessagesSavedGifs
+	Messages_ArchivedStickers_Data
+	Messages_ArchivedStickers
+	TLMessagesArchivedStickers
+	ChannelParticipantsFilter_Data
+	ChannelParticipantsFilter
+	TLChannelParticipantsRecent
+	TLChannelParticipantsAdmins
+	TLChannelParticipantsKicked
+	TLChannelParticipantsBots
+	TLChannelParticipantsBanned
+	TLChannelParticipantsSearch
+	PeerSettings_Data
+	PeerSettings
+	TLPeerSettings
+	Game_Data
+	Game
+	TLGame
+	InputAppEvent_Data
+	InputAppEvent
+	TLInputAppEvent
+	Messages_Dialogs_Data
+	Messages_Dialogs
+	TLMessagesDialogs
+	TLMessagesDialogsSlice
+	AccountDaysTTL_Data
+	AccountDaysTTL
+	TLAccountDaysTTL
+	Account_Authorizations_Data
+	Account_Authorizations
+	TLAccountAuthorizations
+	ReplyMarkup_Data
+	ReplyMarkup
+	TLReplyKeyboardHide
+	TLReplyKeyboardForceReply
+	TLReplyKeyboardMarkup
+	TLReplyInlineMarkup
+	BotInlineResult_Data
+	BotInlineResult
+	TLBotInlineResult
+	TLBotInlineMediaResult
+	MessageFwdHeader_Data
+	MessageFwdHeader
+	TLMessageFwdHeader
+	Page_Data
+	Page
+	TLPagePart
+	TLPageFull
+	Messages_FavedStickers_Data
+	Messages_FavedStickers
+	TLMessagesFavedStickersNotModified
+	TLMessagesFavedStickers
+	InputBotInlineMessageID_Data
+	InputBotInlineMessageID
+	TLInputBotInlineMessageID
+	Storage_FileType_Data
+	Storage_FileType
+	TLStorageFileUnknown
+	TLStorageFilePartial
+	TLStorageFileJpeg
+	TLStorageFileGif
+	TLStorageFilePng
+	TLStorageFilePdf
+	TLStorageFileMp3
+	TLStorageFileMov
+	TLStorageFileMp4
+	TLStorageFileWebp
+	MessagesFilter_Data
+	MessagesFilter
+	TLInputMessagesFilterEmpty
+	TLInputMessagesFilterPhotos
+	TLInputMessagesFilterVideo
+	TLInputMessagesFilterPhotoVideo
+	TLInputMessagesFilterPhotoVideoDocuments
+	TLInputMessagesFilterDocument
+	TLInputMessagesFilterUrl
+	TLInputMessagesFilterGif
+	TLInputMessagesFilterVoice
+	TLInputMessagesFilterMusic
+	TLInputMessagesFilterChatPhotos
+	TLInputMessagesFilterPhoneCalls
+	TLInputMessagesFilterRoundVoice
+	TLInputMessagesFilterRoundVideo
+	TLInputMessagesFilterMyMentions
+	EncryptedChat_Data
+	EncryptedChat
+	TLEncryptedChatEmpty
+	TLEncryptedChatWaiting
+	TLEncryptedChatRequested
+	TLEncryptedChat
+	TLEncryptedChatDiscarded
+	EncryptedFile_Data
+	EncryptedFile
+	TLEncryptedFileEmpty
+	TLEncryptedFile
+	EncryptedMessage_Data
+	EncryptedMessage
+	TLEncryptedMessage
+	TLEncryptedMessageService
+	PrivacyRule_Data
+	PrivacyRule
+	TLPrivacyValueAllowContacts
+	TLPrivacyValueAllowAll
+	TLPrivacyValueAllowUsers
+	TLPrivacyValueDisallowContacts
+	TLPrivacyValueDisallowAll
+	TLPrivacyValueDisallowUsers
+	Updates_ChannelDifference_Data
+	Updates_ChannelDifference
+	TLUpdatesChannelDifferenceEmpty
+	TLUpdatesChannelDifferenceTooLong
+	TLUpdatesChannelDifference
+	CdnConfig_Data
+	CdnConfig
+	TLCdnConfig
+	PopularContact_Data
+	PopularContact
+	TLPopularContact
+	Contacts_ResolvedPeer_Data
+	Contacts_ResolvedPeer
+	TLContactsResolvedPeer
+	GeoPoint_Data
+	GeoPoint
+	TLGeoPointEmpty
+	TLGeoPoint
+	Auth_CheckedPhone_Data
+	Auth_CheckedPhone
+	TLAuthCheckedPhone
+	Auth_ExportedAuthorization_Data
+	Auth_ExportedAuthorization
+	TLAuthExportedAuthorization
+	Contacts_ImportedContacts_Data
+	Contacts_ImportedContacts
+	TLContactsImportedContacts
 	Updates_Data
 	Updates
 	TLUpdatesTooLong
@@ -996,45 +799,242 @@ It has these top-level messages:
 	TLUpdatesCombined
 	TLUpdates
 	TLUpdateShortSentMessage
-	StickerSetCovered_Data
-	StickerSetCovered
-	TLStickerSetCovered
-	TLStickerSetMultiCovered
-	LangPackString_Data
-	LangPackString
-	TLLangPackString
-	TLLangPackStringPluralized
-	TLLangPackStringDeleted
-	Config_Data
-	Config
-	TLConfig
-	Messages_StickerSetInstallResult_Data
-	Messages_StickerSetInstallResult
-	TLMessagesStickerSetInstallResultSuccess
-	TLMessagesStickerSetInstallResultArchive
-	DataJSON_Data
-	DataJSON
-	TLDataJSON
+	StickerPack_Data
+	StickerPack
+	TLStickerPack
+	Messages_AllStickers_Data
+	Messages_AllStickers
+	TLMessagesAllStickersNotModified
+	TLMessagesAllStickers
+	Channels_ChannelParticipants_Data
+	Channels_ChannelParticipants
+	TLChannelsChannelParticipants
+	ChatFull_Data
+	ChatFull
+	TLChatFull
+	TLChannelFull
+	Dialog_Data
+	Dialog
+	TLDialog
+	Updates_State_Data
+	Updates_State
+	TLUpdatesState
 	Help_AppUpdate_Data
 	Help_AppUpdate
 	TLHelpAppUpdate
 	TLHelpNoAppUpdate
-	AccountDaysTTL_Data
-	AccountDaysTTL
-	TLAccountDaysTTL
-	Payments_PaymentForm_Data
-	Payments_PaymentForm
-	TLPaymentsPaymentForm
-	Auth_ExportedAuthorization_Data
-	Auth_ExportedAuthorization
-	TLAuthExportedAuthorization
-	FoundGif_Data
-	FoundGif
-	TLFoundGif
-	TLFoundGifCached
+	InputStickerSet_Data
+	InputStickerSet
+	TLInputStickerSetEmpty
+	TLInputStickerSetID
+	TLInputStickerSetShortName
+	Help_TermsOfService_Data
+	Help_TermsOfService
+	TLHelpTermsOfService
+	Auth_CodeType_Data
+	Auth_CodeType
+	TLAuthCodeTypeSms
+	TLAuthCodeTypeCall
+	TLAuthCodeTypeFlashCall
+	Message_Data
+	Message
+	TLMessageEmpty
+	TLMessage
+	TLMessageService
+	InputPeerNotifySettings_Data
+	InputPeerNotifySettings
+	TLInputPeerNotifySettings
+	ReportReason_Data
+	ReportReason
+	TLInputReportReasonSpam
+	TLInputReportReasonViolence
+	TLInputReportReasonPornography
+	TLInputReportReasonOther
+	Upload_File_Data
+	Upload_File
+	TLUploadFile
+	TLUploadFileCdnRedirect
+	Upload_WebFile_Data
+	Upload_WebFile
+	TLUploadWebFile
+	Upload_CdnFile_Data
+	Upload_CdnFile
+	TLUploadCdnFileReuploadNeeded
+	TLUploadCdnFile
+	PaymentCharge_Data
+	PaymentCharge
+	TLPaymentCharge
+	InputUser_Data
+	InputUser
+	TLInputUserEmpty
+	TLInputUserSelf
+	TLInputUser
+	InputGeoPoint_Data
+	InputGeoPoint
+	TLInputGeoPointEmpty
+	TLInputGeoPoint
+	InputDocument_Data
+	InputDocument
+	TLInputDocumentEmpty
+	TLInputDocument
+	DocumentAttribute_Data
+	DocumentAttribute
+	TLDocumentAttributeImageSize
+	TLDocumentAttributeAnimated
+	TLDocumentAttributeSticker
+	TLDocumentAttributeVideo
+	TLDocumentAttributeAudio
+	TLDocumentAttributeFilename
+	TLDocumentAttributeHasStickers
+	Authorization_Data
+	Authorization
+	TLAuthorization
+	KeyboardButtonRow_Data
+	KeyboardButtonRow
+	TLKeyboardButtonRow
+	RichText_Data
+	RichText
+	TLTextEmpty
+	TLTextPlain
+	TLTextBold
+	TLTextItalic
+	TLTextUnderline
+	TLTextStrike
+	TLTextFixed
+	TLTextUrl
+	TLTextEmail
+	TLTextConcat
+	Payments_SavedInfo_Data
+	Payments_SavedInfo
+	TLPaymentsSavedInfo
+	Channels_AdminLogResults_Data
+	Channels_AdminLogResults
+	TLChannelsAdminLogResults
+	Messages_ChatFull_Data
+	Messages_ChatFull
+	TLMessagesChatFull
+	Document_Data
+	Document
+	TLDocumentEmpty
+	TLDocument
+	Help_Support_Data
+	Help_Support
+	TLHelpSupport
+	WebPage_Data
+	WebPage
+	TLWebPageEmpty
+	TLWebPagePending
+	TLWebPage
+	TLWebPageNotModified
+	Auth_PasswordRecovery_Data
+	Auth_PasswordRecovery
+	TLAuthPasswordRecovery
 	WebDocument_Data
 	WebDocument
 	TLWebDocument
+	Phone_PhoneCall_Data
+	Phone_PhoneCall
+	TLPhonePhoneCall
+	InputPhoto_Data
+	InputPhoto
+	TLInputPhotoEmpty
+	TLInputPhoto
+	UserStatus_Data
+	UserStatus
+	TLUserStatusEmpty
+	TLUserStatusOnline
+	TLUserStatusOffline
+	TLUserStatusRecently
+	TLUserStatusLastWeek
+	TLUserStatusLastMonth
+	Account_PasswordInputSettings_Data
+	Account_PasswordInputSettings
+	TLAccountPasswordInputSettings
+	ExportedChatInvite_Data
+	ExportedChatInvite
+	TLChatInviteEmpty
+	TLChatInviteExported
+	HighScore_Data
+	HighScore
+	TLHighScore
+	PageBlock_Data
+	PageBlock
+	TLPageBlockUnsupported
+	TLPageBlockTitle
+	TLPageBlockSubtitle
+	TLPageBlockAuthorDate
+	TLPageBlockHeader
+	TLPageBlockSubheader
+	TLPageBlockParagraph
+	TLPageBlockPreformatted
+	TLPageBlockFooter
+	TLPageBlockDivider
+	TLPageBlockAnchor
+	TLPageBlockList
+	TLPageBlockBlockquote
+	TLPageBlockPullquote
+	TLPageBlockPhoto
+	TLPageBlockVideo
+	TLPageBlockCover
+	TLPageBlockEmbed
+	TLPageBlockEmbedPost
+	TLPageBlockCollage
+	TLPageBlockSlideshow
+	TLPageBlockChannel
+	TLPageBlockAudio
+	InputPaymentCredentials_Data
+	InputPaymentCredentials
+	TLInputPaymentCredentialsSaved
+	TLInputPaymentCredentials
+	LangPackLanguage_Data
+	LangPackLanguage
+	TLLangPackLanguage
+	WallPaper_Data
+	WallPaper
+	TLWallPaper
+	TLWallPaperSolid
+	TopPeerCategory_Data
+	TopPeerCategory
+	TLTopPeerCategoryBotsPM
+	TLTopPeerCategoryBotsInline
+	TLTopPeerCategoryCorrespondents
+	TLTopPeerCategoryGroups
+	TLTopPeerCategoryChannels
+	TLTopPeerCategoryPhoneCalls
+	ImportedContact_Data
+	ImportedContact
+	TLImportedContact
+	MessageRange_Data
+	MessageRange
+	TLMessageRange
+	ExportedMessageLink_Data
+	ExportedMessageLink
+	TLExportedMessageLink
+	Messages_PeerDialogs_Data
+	Messages_PeerDialogs
+	TLMessagesPeerDialogs
+	Payments_PaymentForm_Data
+	Payments_PaymentForm
+	TLPaymentsPaymentForm
+	PeerNotifyEvents_Data
+	PeerNotifyEvents
+	TLPeerNotifyEventsEmpty
+	TLPeerNotifyEventsAll
+	Account_PrivacyRules_Data
+	Account_PrivacyRules
+	TLAccountPrivacyRules
+	ContactLink_Data
+	ContactLink
+	TLContactLinkUnknown
+	TLContactLinkNone
+	TLContactLinkHasPhone
+	TLContactLinkContact
+	PhoneConnection_Data
+	PhoneConnection
+	TLPhoneConnection
+	ChannelAdminRights_Data
+	ChannelAdminRights
+	TLChannelAdminRights
 	TLInvokeAfterMsg
 	TLInvokeAfterMsgs
 	TLInitConnection
@@ -1279,39 +1279,12 @@ It has these top-level messages:
 	Vector_CdnFileHash
 	Vector_LangPackString
 	Vector_LangPackLanguage
-	MsgsAck_Data
-	MsgsAck
-	TLMsgsAck
-	MsgDetailedInfo_Data
-	MsgDetailedInfo
-	TLMsgDetailedInfo
-	TLMsgNewDetailedInfo
-	MsgResendReq_Data
-	MsgResendReq
-	TLMsgResendReq
-	Pong_Data
-	Pong
-	TLPong
-	Help_ConfigSimple_Data
-	Help_ConfigSimple
-	TLHelpConfigSimple
-	MsgsStateReq_Data
-	MsgsStateReq
-	TLMsgsStateReq
-	MsgsStateInfo_Data
-	MsgsStateInfo
-	TLMsgsStateInfo
-	RpcDropAnswer_Data
-	RpcDropAnswer
-	TLRpcAnswerUnknown
-	TLRpcAnswerDroppedRunning
-	TLRpcAnswerDropped
 	FutureSalt_Data
 	FutureSalt
 	TLFutureSalt
-	FutureSalts_Data
-	FutureSalts
-	TLFutureSalts
+	Pong_Data
+	Pong
+	TLPong
 	DestroySessionRes_Data
 	DestroySessionRes
 	TLDestroySessionOk
@@ -1319,22 +1292,49 @@ It has these top-level messages:
 	NewSession_Data
 	NewSession
 	TLNewSessionCreated
+	Help_ConfigSimple_Data
+	Help_ConfigSimple
+	TLHelpConfigSimple
+	MsgsStateReq_Data
+	MsgsStateReq
+	TLMsgsStateReq
+	MsgsAllInfo_Data
+	MsgsAllInfo
+	TLMsgsAllInfo
+	MsgResendReq_Data
+	MsgResendReq
+	TLMsgResendReq
+	RpcDropAnswer_Data
+	RpcDropAnswer
+	TLRpcAnswerUnknown
+	TLRpcAnswerDroppedRunning
+	TLRpcAnswerDropped
+	BadMsgNotification_Data
+	BadMsgNotification
+	TLBadMsgNotification
+	TLBadServerSalt
+	MsgsStateInfo_Data
+	MsgsStateInfo
+	TLMsgsStateInfo
+	MsgDetailedInfo_Data
+	MsgDetailedInfo
+	TLMsgDetailedInfo
+	TLMsgNewDetailedInfo
+	RpcError_Data
+	RpcError
+	TLRpcError
 	HttpWait_Data
 	HttpWait
 	TLHttpWait
 	IpPort_Data
 	IpPort
 	TLIpPort
-	BadMsgNotification_Data
-	BadMsgNotification
-	TLBadMsgNotification
-	TLBadServerSalt
-	MsgsAllInfo_Data
-	MsgsAllInfo
-	TLMsgsAllInfo
-	RpcError_Data
-	RpcError
-	TLRpcError
+	MsgsAck_Data
+	MsgsAck
+	TLMsgsAck
+	FutureSalts_Data
+	FutureSalts
+	TLFutureSalts
 	TLRpcDropAnswer
 	TLGetFutureSalts
 	TLPing
@@ -1360,59 +1360,6 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 // /////////////////////////////////////////////////////////////////////////////
-// True <--
-//  + TL_true
-//
-type True_Data struct {
-}
-
-func (m *True_Data) Reset()                    { *m = True_Data{} }
-func (m *True_Data) String() string            { return proto.CompactTextString(m) }
-func (*True_Data) ProtoMessage()               {}
-func (*True_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
-
-type True struct {
-	Constructor int32      `protobuf:"varint,1,opt,name=constructor" json:"constructor,omitempty"`
-	Data        *True_Data `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
-}
-
-func (m *True) Reset()                    { *m = True{} }
-func (m *True) String() string            { return proto.CompactTextString(m) }
-func (*True) ProtoMessage()               {}
-func (*True) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
-
-func (m *True) GetConstructor() int32 {
-	if m != nil {
-		return m.Constructor
-	}
-	return 0
-}
-
-func (m *True) GetData() *True_Data {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
-
-// true#3fedd339 = True;
-type TLTrue struct {
-	Data *True `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
-}
-
-func (m *TLTrue) Reset()                    { *m = TLTrue{} }
-func (m *TLTrue) String() string            { return proto.CompactTextString(m) }
-func (*TLTrue) ProtoMessage()               {}
-func (*TLTrue) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
-
-func (m *TLTrue) GetData() *True {
-	if m != nil {
-		return m.Data
-	}
-	return nil
-}
-
-// /////////////////////////////////////////////////////////////////////////////
 // Error <--
 //  + TL_error
 //
@@ -1424,7 +1371,7 @@ type Error_Data struct {
 func (m *Error_Data) Reset()                    { *m = Error_Data{} }
 func (m *Error_Data) String() string            { return proto.CompactTextString(m) }
 func (*Error_Data) ProtoMessage()               {}
-func (*Error_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*Error_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
 func (m *Error_Data) GetCode() int32 {
 	if m != nil {
@@ -1441,42 +1388,42 @@ func (m *Error_Data) GetText() string {
 }
 
 type Error struct {
-	Constructor int32       `protobuf:"varint,1,opt,name=constructor" json:"constructor,omitempty"`
-	Data        *Error_Data `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Constructor TLConstructor `protobuf:"varint,1,opt,name=constructor,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Data2       *Error_Data   `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *Error) Reset()                    { *m = Error{} }
 func (m *Error) String() string            { return proto.CompactTextString(m) }
 func (*Error) ProtoMessage()               {}
-func (*Error) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (*Error) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *Error) GetConstructor() int32 {
+func (m *Error) GetConstructor() TLConstructor {
 	if m != nil {
 		return m.Constructor
 	}
-	return 0
+	return TLConstructor_CRC32_UNKNOWN
 }
 
-func (m *Error) GetData() *Error_Data {
+func (m *Error) GetData2() *Error_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
 
 // error#c4b9f9bb code:int text:string = Error;
 type TLError struct {
-	Data *Error `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Data2 *Error_Data `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *TLError) Reset()                    { *m = TLError{} }
 func (m *TLError) String() string            { return proto.CompactTextString(m) }
 func (*TLError) ProtoMessage()               {}
-func (*TLError) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (*TLError) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
-func (m *TLError) GetData() *Error {
+func (m *TLError) GetData2() *Error_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
@@ -1491,45 +1438,45 @@ type Null_Data struct {
 func (m *Null_Data) Reset()                    { *m = Null_Data{} }
 func (m *Null_Data) String() string            { return proto.CompactTextString(m) }
 func (*Null_Data) ProtoMessage()               {}
-func (*Null_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+func (*Null_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
 
 type Null struct {
-	Constructor int32      `protobuf:"varint,1,opt,name=constructor" json:"constructor,omitempty"`
-	Data        *Null_Data `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Constructor TLConstructor `protobuf:"varint,1,opt,name=constructor,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Data2       *Null_Data    `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *Null) Reset()                    { *m = Null{} }
 func (m *Null) String() string            { return proto.CompactTextString(m) }
 func (*Null) ProtoMessage()               {}
-func (*Null) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
+func (*Null) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
 
-func (m *Null) GetConstructor() int32 {
+func (m *Null) GetConstructor() TLConstructor {
 	if m != nil {
 		return m.Constructor
 	}
-	return 0
+	return TLConstructor_CRC32_UNKNOWN
 }
 
-func (m *Null) GetData() *Null_Data {
+func (m *Null) GetData2() *Null_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
 
 // null#56730bcc = Null;
 type TLNull struct {
-	Data *Null `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Data2 *Null_Data `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *TLNull) Reset()                    { *m = TLNull{} }
 func (m *TLNull) String() string            { return proto.CompactTextString(m) }
 func (*TLNull) ProtoMessage()               {}
-func (*TLNull) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
+func (*TLNull) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
 
-func (m *TLNull) GetData() *Null {
+func (m *TLNull) GetData2() *Null_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
@@ -1545,70 +1492,120 @@ type Bool_Data struct {
 func (m *Bool_Data) Reset()                    { *m = Bool_Data{} }
 func (m *Bool_Data) String() string            { return proto.CompactTextString(m) }
 func (*Bool_Data) ProtoMessage()               {}
-func (*Bool_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
+func (*Bool_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
 
 type Bool struct {
-	Constructor int32      `protobuf:"varint,1,opt,name=constructor" json:"constructor,omitempty"`
-	Data        *Bool_Data `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Constructor TLConstructor `protobuf:"varint,1,opt,name=constructor,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Data2       *Bool_Data    `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *Bool) Reset()                    { *m = Bool{} }
 func (m *Bool) String() string            { return proto.CompactTextString(m) }
 func (*Bool) ProtoMessage()               {}
-func (*Bool) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
+func (*Bool) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
-func (m *Bool) GetConstructor() int32 {
+func (m *Bool) GetConstructor() TLConstructor {
 	if m != nil {
 		return m.Constructor
 	}
-	return 0
+	return TLConstructor_CRC32_UNKNOWN
 }
 
-func (m *Bool) GetData() *Bool_Data {
+func (m *Bool) GetData2() *Bool_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
 
 // boolFalse#bc799737 = Bool;
 type TLBoolFalse struct {
-	Data *Bool `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Data2 *Bool_Data `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *TLBoolFalse) Reset()                    { *m = TLBoolFalse{} }
 func (m *TLBoolFalse) String() string            { return proto.CompactTextString(m) }
 func (*TLBoolFalse) ProtoMessage()               {}
-func (*TLBoolFalse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+func (*TLBoolFalse) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
-func (m *TLBoolFalse) GetData() *Bool {
+func (m *TLBoolFalse) GetData2() *Bool_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
 	}
 	return nil
 }
 
 // boolTrue#997275b5 = Bool;
 type TLBoolTrue struct {
-	Data *Bool `protobuf:"bytes,2,opt,name=data" json:"data,omitempty"`
+	Data2 *Bool_Data `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
 }
 
 func (m *TLBoolTrue) Reset()                    { *m = TLBoolTrue{} }
 func (m *TLBoolTrue) String() string            { return proto.CompactTextString(m) }
 func (*TLBoolTrue) ProtoMessage()               {}
-func (*TLBoolTrue) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
+func (*TLBoolTrue) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
 
-func (m *TLBoolTrue) GetData() *Bool {
+func (m *TLBoolTrue) GetData2() *Bool_Data {
 	if m != nil {
-		return m.Data
+		return m.Data2
+	}
+	return nil
+}
+
+// /////////////////////////////////////////////////////////////////////////////
+// True <--
+//  + TL_true
+//
+type True_Data struct {
+}
+
+func (m *True_Data) Reset()                    { *m = True_Data{} }
+func (m *True_Data) String() string            { return proto.CompactTextString(m) }
+func (*True_Data) ProtoMessage()               {}
+func (*True_Data) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
+
+type True struct {
+	Constructor TLConstructor `protobuf:"varint,1,opt,name=constructor,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Data2       *True_Data    `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
+}
+
+func (m *True) Reset()                    { *m = True{} }
+func (m *True) String() string            { return proto.CompactTextString(m) }
+func (*True) ProtoMessage()               {}
+func (*True) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+
+func (m *True) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return TLConstructor_CRC32_UNKNOWN
+}
+
+func (m *True) GetData2() *True_Data {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// true#3fedd339 = True;
+type TLTrue struct {
+	Data2 *True_Data `protobuf:"bytes,2,opt,name=data2" json:"data2,omitempty"`
+}
+
+func (m *TLTrue) Reset()                    { *m = TLTrue{} }
+func (m *TLTrue) String() string            { return proto.CompactTextString(m) }
+func (*TLTrue) ProtoMessage()               {}
+func (*TLTrue) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
+
+func (m *TLTrue) GetData2() *True_Data {
+	if m != nil {
+		return m.Data2
 	}
 	return nil
 }
 
 func init() {
-	proto.RegisterType((*True_Data)(nil), "mtproto.True_Data")
-	proto.RegisterType((*True)(nil), "mtproto.True")
-	proto.RegisterType((*TLTrue)(nil), "mtproto.TL_true")
 	proto.RegisterType((*Error_Data)(nil), "mtproto.Error_Data")
 	proto.RegisterType((*Error)(nil), "mtproto.Error")
 	proto.RegisterType((*TLError)(nil), "mtproto.TL_error")
@@ -1619,30 +1616,33 @@ func init() {
 	proto.RegisterType((*Bool)(nil), "mtproto.Bool")
 	proto.RegisterType((*TLBoolFalse)(nil), "mtproto.TL_boolFalse")
 	proto.RegisterType((*TLBoolTrue)(nil), "mtproto.TL_boolTrue")
+	proto.RegisterType((*True_Data)(nil), "mtproto.True_Data")
+	proto.RegisterType((*True)(nil), "mtproto.True")
+	proto.RegisterType((*TLTrue)(nil), "mtproto.TL_true")
 }
 
 func init() { proto.RegisterFile("schema.tl.core_types.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 309 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x92, 0xcf, 0x4b, 0xc3, 0x30,
-	0x14, 0xc7, 0xd9, 0xd8, 0x9c, 0x7d, 0x55, 0x0f, 0xf1, 0x32, 0xf4, 0x52, 0x7b, 0xd0, 0x1e, 0x24,
-	0xf8, 0xeb, 0x2f, 0x28, 0x2a, 0x1e, 0xaa, 0x8c, 0x92, 0x7b, 0x49, 0xb3, 0xa0, 0x83, 0xb4, 0x6f,
-	0xa4, 0x29, 0xe8, 0x7f, 0x2f, 0x09, 0xb1, 0x35, 0x87, 0x89, 0xb0, 0xdb, 0x7b, 0x6f, 0xef, 0xf3,
-	0xc9, 0x97, 0xb7, 0xc2, 0x59, 0x27, 0x3e, 0x64, 0xc3, 0xa9, 0x51, 0x54, 0xa0, 0x96, 0x95, 0xf9,
-	0xda, 0xca, 0x8e, 0x6e, 0x35, 0x1a, 0x24, 0x8b, 0xc6, 0xb8, 0x22, 0x8d, 0x21, 0x62, 0xba, 0x97,
-	0xd5, 0x23, 0x37, 0x3c, 0x5d, 0xc1, 0xcc, 0x36, 0x24, 0x81, 0x58, 0x60, 0xdb, 0x19, 0xdd, 0x0b,
-	0x83, 0x7a, 0x39, 0x49, 0x26, 0xd9, 0xbc, 0xfc, 0x3d, 0x22, 0x97, 0x30, 0x5b, 0x73, 0xc3, 0x97,
-	0xd3, 0x64, 0x92, 0xc5, 0x77, 0x84, 0x7a, 0x1d, 0x1d, 0x5c, 0xa5, 0xfb, 0x3d, 0xbd, 0x86, 0x05,
-	0x2b, 0x2a, 0x63, 0xa5, 0x17, 0x01, 0x72, 0x1c, 0x20, 0x7e, 0xfb, 0x01, 0xe0, 0x49, 0x6b, 0xd4,
-	0xce, 0x40, 0x08, 0xcc, 0x04, 0xae, 0xa5, 0x7f, 0xde, 0xd5, 0x76, 0x66, 0xe4, 0xa7, 0x71, 0x92,
-	0xa8, 0x74, 0x75, 0x5a, 0xc2, 0xdc, 0x51, 0xff, 0x88, 0x7d, 0x15, 0x64, 0x38, 0x1d, 0x32, 0x8c,
-	0xaf, 0xfa, 0x24, 0x14, 0x0e, 0x59, 0x51, 0x49, 0xa7, 0x4d, 0x03, 0xe8, 0x24, 0x84, 0xfc, 0x7e,
-	0x0c, 0xd1, 0x5b, 0xaf, 0xd4, 0x70, 0x46, 0xdb, 0xec, 0x71, 0xc6, 0xc1, 0x15, 0x9c, 0xb1, 0xb5,
-	0xd2, 0x5d, 0x67, 0xb4, 0xc8, 0x18, 0x26, 0x47, 0x1c, 0xc3, 0xd8, 0x66, 0x8f, 0x30, 0x83, 0xcb,
-	0xeb, 0x6f, 0xe1, 0x88, 0x15, 0x55, 0x8d, 0xa8, 0x9e, 0xb9, 0xea, 0x76, 0xff, 0xb1, 0x96, 0xf3,
-	0xc8, 0x0d, 0xc4, 0x1e, 0x61, 0x7f, 0x7d, 0x0a, 0x23, 0x91, 0x67, 0x70, 0x2e, 0xb0, 0xa1, 0xad,
-	0xac, 0x7b, 0xc5, 0x37, 0x0d, 0x95, 0xed, 0xfb, 0xa6, 0x95, 0x3f, 0x9b, 0xf9, 0xe2, 0x95, 0xad,
-	0x6c, 0xf1, 0x32, 0xad, 0x0f, 0xdc, 0xe4, 0xfe, 0x3b, 0x00, 0x00, 0xff, 0xff, 0x4c, 0x19, 0xdd,
-	0x53, 0xef, 0x02, 0x00, 0x00,
+	// 313 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x91, 0xcf, 0x4f, 0xc2, 0x30,
+	0x14, 0xc7, 0x03, 0x01, 0x71, 0xaf, 0xc6, 0x43, 0x8d, 0x86, 0xe0, 0x85, 0xec, 0x34, 0x2f, 0x3d,
+	0x0c, 0x8d, 0x9c, 0xf1, 0x47, 0x3c, 0x4c, 0x63, 0x96, 0xde, 0x97, 0x52, 0x1a, 0xc5, 0x74, 0x7b,
+	0xa4, 0xeb, 0x12, 0xfd, 0xef, 0x4d, 0x0b, 0x14, 0xf0, 0x60, 0x24, 0x86, 0xdb, 0xeb, 0xeb, 0xf7,
+	0xb3, 0xcf, 0xb7, 0x19, 0x0c, 0x6a, 0xf9, 0xae, 0x4a, 0xc1, 0xac, 0x66, 0x12, 0x8d, 0x2a, 0xec,
+	0xd7, 0x42, 0xd5, 0x6c, 0x61, 0xd0, 0x22, 0xed, 0x95, 0xd6, 0x0f, 0x83, 0xf3, 0xad, 0x90, 0x91,
+	0xa3, 0x74, 0x79, 0x1f, 0x5f, 0x03, 0x3c, 0x18, 0x83, 0xa6, 0xb8, 0x17, 0x56, 0x50, 0x0a, 0x1d,
+	0x89, 0x33, 0xd5, 0x6f, 0x0d, 0x5b, 0x49, 0x37, 0xf7, 0xb3, 0xdb, 0x59, 0xf5, 0x69, 0xfb, 0xed,
+	0x61, 0x2b, 0x89, 0x72, 0x3f, 0xc7, 0x1a, 0xba, 0x9e, 0xa2, 0x63, 0x20, 0x12, 0xab, 0xda, 0x9a,
+	0x46, 0x5a, 0x34, 0x9e, 0x3b, 0x4d, 0x2f, 0xd8, 0x4a, 0xca, 0x78, 0x76, 0xb7, 0xb9, 0xcd, 0xb7,
+	0xa3, 0xf4, 0x0a, 0xba, 0x33, 0x61, 0x45, 0xea, 0xbf, 0x4b, 0xd2, 0xb3, 0xc0, 0x6c, 0xea, 0xe4,
+	0xcb, 0x44, 0x7c, 0x03, 0xc7, 0x3c, 0x2b, 0x94, 0x17, 0xee, 0x81, 0x11, 0x88, 0x5e, 0x1a, 0xad,
+	0xfd, 0x2e, 0xfe, 0x80, 0x8e, 0x3b, 0xfc, 0xa3, 0x70, 0xb2, 0x6b, 0xa6, 0x81, 0x09, 0x92, 0xb5,
+	0x78, 0x04, 0x3d, 0x9e, 0x15, 0x95, 0xd3, 0xfd, 0x1d, 0x22, 0x10, 0x4d, 0x10, 0x37, 0x6d, 0xdd,
+	0xe1, 0x10, 0x6d, 0x83, 0x64, 0x2d, 0x1e, 0xc3, 0x09, 0xcf, 0x8a, 0x29, 0xa2, 0x7e, 0x14, 0xba,
+	0x56, 0x7b, 0x90, 0xb7, 0x40, 0x56, 0x24, 0x37, 0xcd, 0x3e, 0x20, 0x81, 0xc8, 0x11, 0xe1, 0xad,
+	0x1e, 0x3f, 0xc0, 0x5b, 0x83, 0x64, 0xf7, 0xcf, 0xd8, 0x5f, 0xdb, 0xfe, 0x84, 0x26, 0x09, 0x5c,
+	0x4a, 0x2c, 0x59, 0xa5, 0xa6, 0x8d, 0x16, 0xf3, 0x92, 0xa9, 0xea, 0x6d, 0x5e, 0xa9, 0x75, 0x7e,
+	0xd2, 0x7b, 0xe6, 0xaf, 0x6e, 0x78, 0x6a, 0x4f, 0x8f, 0xfc, 0x66, 0xf4, 0x1d, 0x00, 0x00, 0xff,
+	0xff, 0x41, 0x6d, 0x23, 0xb7, 0x91, 0x03, 0x00, 0x00,
 }

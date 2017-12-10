@@ -26,24 +26,7 @@ option java_package = "com.nebulaim.engine.mtproto";
 option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
-
-
-///////////////////////////////////////////////////////////////////////////////
-// True <--
-//  + TL_true
-//
-message True_Data {
-}
-
-message True {
-    int32 constructor = 1;
-    True_Data data = 2;
-}
-
-// true#3fedd339 = True;
-message TL_true {
-    True data = 2;
-}
+import "schema.tl.crc32.proto";
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -56,13 +39,13 @@ message Error_Data {
 }
 
 message Error {
-    int32 constructor = 1;
-    Error_Data data = 2;
+    TLConstructor constructor = 1;
+    Error_Data data2 = 2;
 }
 
 // error#c4b9f9bb code:int text:string = Error;
 message TL_error {
-    Error data = 2;
+    Error_Data data2 = 2;
 }
 
 
@@ -74,13 +57,13 @@ message Null_Data {
 }
 
 message Null {
-    int32 constructor = 1;
-    Null_Data data = 2;
+    TLConstructor constructor = 1;
+    Null_Data data2 = 2;
 }
 
 // null#56730bcc = Null;
 message TL_null {
-    Null data = 2;
+    Null_Data data2 = 2;
 }
 
 
@@ -93,18 +76,36 @@ message Bool_Data {
 }
 
 message Bool {
-    int32 constructor = 1;
-    Bool_Data data = 2;
+    TLConstructor constructor = 1;
+    Bool_Data data2 = 2;
 }
 
 // boolFalse#bc799737 = Bool;
 message TL_boolFalse {
-    Bool data = 2;
+    Bool_Data data2 = 2;
 }
 
 // boolTrue#997275b5 = Bool;
 message TL_boolTrue {
-    Bool data = 2;
+    Bool_Data data2 = 2;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// True <--
+//  + TL_true
+//
+message True_Data {
+}
+
+message True {
+    TLConstructor constructor = 1;
+    True_Data data2 = 2;
+}
+
+// true#3fedd339 = True;
+message TL_true {
+    True_Data data2 = 2;
 }
 
 

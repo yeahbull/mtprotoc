@@ -15,30 +15,30 @@
  * limitations under the License.
  */
 
-package main
+package gengolang
 
 import (
-	mtproto_parser "github.com/nebulaim/mtprotoc/codegen/parser"
+	"bytes"
+	"fmt"
 	"github.com/golang/glog"
-	"flag"
-	"github.com/nebulaim/mtprotoc/codegen/gen/golang"
+	mtproto_parser "github.com/nebulaim/mtprotoc/codegen/parser"
+	"io/ioutil"
+	"text/template"
 )
 
-func init() {
-	flag.Set("alsologtostderr", "true")
-	flag.Set("log_dir", "false")
+func genCodecSchema(schemas *mtproto_parser.MTProtoSchemas, outFilePath string) {
+	baseTypes := makeBaseTypeListTpl(schemas.Sync)
+	// glog.Info(baseTypes)
+
+	var buf bytes.Buffer
+	t := template.Must(template.ParseFiles("./gen/tpl/codec_schema.tl.pb.go.tpl"))
+	t.Execute(&buf, baseTypes)
+	err := ioutil.WriteFile(fmt.Sprintf("%s/out/codec_schema.tl.pb.go", outFilePath), buf.Bytes(), 0666)
+	if err != nil {
+		glog.Fatal("genCodecSchema error: ", err)
+	}
 }
 
-func main() {
-	flag.Parse()
-
-	schemas, err := mtproto_parser.Parse("./schemas/scheme.tl")
-	if err != nil {
-		glog.Fatal(err)
-	}
-
-	// glog.Info(schemas.Layer)
-	// glog.Info(schemas.TypeMap)
-	// genproto.GenProto(schemas, "./")
-	gengolang.GenGolang(schemas, "./")
+func GenGolang(schemas *mtproto_parser.MTProtoSchemas, outFilePath string) {
+	genCodecSchema(schemas, outFilePath)
 }

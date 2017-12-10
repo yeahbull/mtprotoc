@@ -26,6 +26,8 @@ option java_package = "com.nebulaim.engine.mtproto";
 option java_outer_classname = "MTProto";
 option optimize_for = CODE_SIZE;
 
+import "schema.tl.crc32.proto";
+
 {{ range .BaseTypeList }}
 ///////////////////////////////////////////////////////////////////////////////
 // {{.Name}} <--
@@ -36,12 +38,12 @@ message {{.Name}}_Data {
 {{end}}}
 
 message {{.Name}} {
-    int32 constructor = 1;
-    {{.Name}}_Data data = 2;
+    TLConstructor constructor = 1;
+    {{.Name}}_Data data2 = 2;
 }
 
 {{ range .SubMessageList }}// {{.Line}}
 message TL_{{.Name}} {
-    {{.ResType}} data = 2;
+    {{.ResType}}_Data data2 = 2;
 }
 {{end}}{{end}}
