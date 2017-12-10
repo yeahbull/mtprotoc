@@ -25,8 +25,9 @@ package mtproto
 
 import (
     // "encoding/binary"
-    // "fmt"
+    "fmt"
     // "github.com/golang/protobuf/proto"
+    "github.com/golang/glog"
 )
 
 {{ range .BaseTypeList }}
@@ -42,8 +43,23 @@ func (m *{{.Name}}) Encode() []byte {
         return t.Encode()
 {{end}}
     default:
-        return []byte{}
+        glog.Error("Constructor error: ",  m.GetConstructor())
+        return nil
     }
+}
+
+func (m *{{.Name}}) Decode(dbuf *DecodeBuf) error {
+    m.Constructor = TLConstructor(dbuf.Int())
+    switch m.Constructor {
+{{ range $i, $v := .SubMessageList }}    case TLConstructor_CRC32_{{.Predicate}}:
+        m2 := &TL{{.Name}}{&{{.ResType}}_Data{}}
+        m2.Decode(dbuf)
+        m.Data2 = m2.Data2
+{{end}}
+    default:
+        return fmt.Errorf("Invalid constructorId: %d", int32(m.Constructor))
+    }
+    return dbuf.err
 }
 
 {{ range .SubMessageList }}// {{.Line}}
@@ -58,7 +74,7 @@ func (m *{{.ResType}}) To_{{.Name}}() *TL{{.Name}} {
 {{ range $i, $v := .SubMessageList }}// {{.Line}}
 func (m *TL{{.Name}}) To_{{.ResType}}() *{{.ResType}} {
     return &{{.ResType}}{
-        Constructor: TLConstructor_CRC32_error,
+        Constructor: TLConstructor_CRC32_{{.Predicate}},
         Data2: m.Data2,
     }
 }
@@ -83,4 +99,21 @@ func (m* TL{{.Name}}) Decode(dbuf *DecodeBuf) error {
     return dbuf.err
 }
 {{end}}
+{{end}}
+
+{{range .RequestList}}
+func (m* TL{{.Name}}) Encode() []byte {
+x := NewEncodeBuf(512)
+x.Int(int32(TLConstructor_CRC32_{{.Predicate}}))
+
+{{range $i2, $v2 :=    .EncodeCodeList}}    {{$v2}}
+{{end}}
+return x.buf
+}
+
+func (m* TL{{.Name}}) Decode(dbuf *DecodeBuf) error {
+{{range $i2, $v2 :=    .DecodeCodeList}}    {{$v2}}
+{{end}}
+return dbuf.err
+}
 {{end}}

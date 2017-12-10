@@ -23,7 +23,7 @@ import (
 	"fmt"
 	"math"
 	"math/big"
-	"github.com/golang/glog"
+	// "github.com/golang/glog"
 )
 
 type DecodeBuf struct {
@@ -305,23 +305,23 @@ func (m *DecodeBuf) Vector() []TLObject {
 */
 
 func (m *DecodeBuf) Object() (r TLObject) {
-	classID := m.Int()
-	if m.err != nil {
-		return nil
-	}
+	// classID := m.Int()
+	// if m.err != nil {
+	// 	return nil
+	// }
 
-	r = NewTLObjectByClassID(classID)
-	if r == nil {
-		glog.Errorf("Can't find registed classId: %d", classID)
-		return nil
-	}
+	// r = NewTLObjectByClassID(classID)
+	// if r == nil {
+	// 	glog.Errorf("Can't find registed classId: %d", classID)
+	// 	return nil
+	// }
 
-	glog.Infof("NewTLObjectByClassID, classID: %x", uint32(classID))
+	// glog.Infof("NewTLObjectByClassID, classID: %x", uint32(classID))
 
-	err := r.(TLObject).Decode(m)
-	if err != nil {
-		glog.Error("Object(", classID, ") decode error: ", err, "")
-	}
+	// err := r.(TLObject).Decode(m)
+	// if err != nil {
+	// 	glog.Error("Object(", classID, ") decode error: ", err, "")
+	// }
 	return
 }
 

@@ -27,12 +27,29 @@ import (
 )
 
 func genCodecSchema(schemas *mtproto_parser.MTProtoSchemas, outFilePath string) {
-	baseTypes := makeBaseTypeListTpl(schemas.Sync)
+	codecs := &TplCodecDataList{}
+	codecs.BaseTypeList = makeBaseTypeListTpl(schemas.Sync)
+	codecs.RequestList = makeFunctionDataListTpl(schemas.Sync)
 	// glog.Info(baseTypes)
 
 	var buf bytes.Buffer
 	t := template.Must(template.ParseFiles("./gen/tpl/codec_schema.tl.pb.go.tpl"))
-	t.Execute(&buf, baseTypes)
+	t.Execute(&buf, codecs)
+	err := ioutil.WriteFile(fmt.Sprintf("%s/out/codec_schema.tl.pb.go", outFilePath), buf.Bytes(), 0666)
+	if err != nil {
+		glog.Fatal("genCodecSchema error: ", err)
+	}
+}
+
+func genRpcImpl(schemas *mtproto_parser.MTProtoSchemas, outFilePath string) {
+	codecs := &TplCodecDataList{}
+	codecs.BaseTypeList = makeBaseTypeListTpl(schemas.Sync)
+	codecs.RequestList = makeFunctionDataListTpl(schemas.Sync)
+	// glog.Info(baseTypes)
+
+	var buf bytes.Buffer
+	t := template.Must(template.ParseFiles("./gen/tpl/codec_schema.tl.pb.go.tpl"))
+	t.Execute(&buf, codecs)
 	err := ioutil.WriteFile(fmt.Sprintf("%s/out/codec_schema.tl.pb.go", outFilePath), buf.Bytes(), 0666)
 	if err != nil {
 		glog.Fatal("genCodecSchema error: ", err)
