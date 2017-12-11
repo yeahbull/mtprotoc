@@ -22,12 +22,41 @@ import (
 	mtproto_parser "github.com/nebulaim/mtprotoc/codegen/parser"
 	"strconv"
 	"strings"
+	// "github.com/golang/glog"
 )
+
+type TplCRC32Info struct {
+	Name string
+	Type string
+}
+
+type TplCRC32 struct {
+	CRC32List []TplCRC32Info
+}
+
+func makeTplCRC32List(schemas *mtproto_parser.Schemas) (tplCRC32List []TplCRC32Info) {
+	for _, c := range schemas.ConstructorList {
+		// glog.Info(c)
+		tplCRC32List = append(tplCRC32List, TplCRC32Info{
+			Name: strings.Replace(c.Predicate, ".", "_", -1),
+			Type: toProtoGoName(strings.Replace(c.Predicate, ".", "_", -1)),
+		})
+	}
+	for _, f := range schemas.FunctionList {
+		// glog.Info(f)
+		tplCRC32List = append(tplCRC32List, TplCRC32Info{
+			Name: strings.Replace(f.Method, ".", "_", -1),
+			Type: toProtoGoName(strings.Replace(f.Method, ".", "_", -1)),
+		})
+	}
+	return
+}
 
 // types
 type TplCodecDataList struct {
 	BaseTypeList []TplBaseTypeData
 	RequestList []TplMessageData
+	CRC32List []TplCRC32Info
 }
 
 // functions
@@ -41,6 +70,18 @@ type TplFunctionDataList struct {
 	//	rpc auth_checkPhone(TL_auth_checkPhone) returns (auth_CheckedPhone) {}
 	// }
 	ServiceList []TplBaseTypeData
+}
+
+type TplServiceData struct {
+	RPCName string
+	MethodName string
+	RequestName string
+	ResponseName string
+	Line string
+}
+// functions
+type TplServiceDataList struct {
+	ServiceList map[string][]TplServiceData
 }
 
 // 参数列表
@@ -208,9 +249,15 @@ func makeCodecCodeByNameType(n string, t mtproto_parser.Type, idx int) (e string
 	case mtproto_parser.DoubleType:
 		e = fmt.Sprintf("x.Double(m.Get%s())", toProtoGoName(n))
 		d = fmt.Sprintf("m.Set%s(dbuf.Double())", toProtoGoName(n))
-	case mtproto_parser.Int128Type, mtproto_parser.Int256Type, mtproto_parser.BytesType:
+	case mtproto_parser.Int128Type:
 		e = fmt.Sprintf("x.Bytes(m.Get%s())", toProtoGoName(n))
-		d = fmt.Sprintf("m.Set%s(dbuf.Bytes())", toProtoGoName(n))
+		d = fmt.Sprintf("m.Set%s(dbuf.Bytes(16))", toProtoGoName(n))
+	case mtproto_parser.Int256Type:
+		e = fmt.Sprintf("x.Bytes(m.Get%s())", toProtoGoName(n))
+		d = fmt.Sprintf("m.Set%s(dbuf.Bytes(32))", toProtoGoName(n))
+	case mtproto_parser.BytesType:
+		e = fmt.Sprintf("x.StringBytes(m.Get%s())", toProtoGoName(n))
+		d = fmt.Sprintf("m.Set%s(dbuf.StringBytes())", toProtoGoName(n))
 	case mtproto_parser.StringType:
 		e = fmt.Sprintf("x.String(m.Get%s())", toProtoGoName(n))
 		d = fmt.Sprintf("m.Set%s(dbuf.String())", toProtoGoName(n))
@@ -243,10 +290,10 @@ func makeCodecCode(params []mtproto_parser.Param, n string, t mtproto_parser.Typ
 		d = fmt.Sprintf("m.Set%s(dbuf.Double())", toProtoGoName(n))
 	case mtproto_parser.Int128Type:
 		e = fmt.Sprintf("x.Bytes(m.Get%s())", toProtoGoName(n))
-		d = fmt.Sprintf("m.Set%s(dbuf.Bytes())", toProtoGoName(n))
+		d = fmt.Sprintf("m.Set%s(dbuf.Bytes(16))", toProtoGoName(n))
 	case mtproto_parser.Int256Type:
 		e = fmt.Sprintf("x.Bytes(m.Get%s())", toProtoGoName(n))
-		d = fmt.Sprintf("m.Set%s(dbuf.Bytes())", toProtoGoName(n))
+		d = fmt.Sprintf("m.Set%s(dbuf.Bytes(32))", toProtoGoName(n))
 	case mtproto_parser.StringType:
 		e = fmt.Sprintf("x.String(m.Get%s())", toProtoGoName(n))
 		d = fmt.Sprintf("m.Set%s(dbuf.String())", toProtoGoName(n))
@@ -277,10 +324,15 @@ func makeCodecCode(params []mtproto_parser.Param, n string, t mtproto_parser.Typ
 			mtproto_parser.CustomType,
 			mtproto_parser.BytesType:
 			e2, d2 := makeCodecCode(params, n, t2.Type, idx)
-			e = fmt.Sprintf("if m.Get%s() != nil { %s }", toProtoGoName(n), e2)
-			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 { %s }", t2.Mask, d2)
-		case mtproto_parser.BuiltInVectorType, mtproto_parser.TVectorType:
+			e = fmt.Sprintf("if m.Get%s() != nil {\n %s \n}", toProtoGoName(n), e2)
+			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 {\n %s \n}", t2.Mask, d2)
+		case mtproto_parser.BuiltInVectorType:
 			t3, _ := t.(mtproto_parser.BuiltInVectorType)
+			e2, d2 := makeCodecCode(params, n, t3.Type, idx)
+			e = fmt.Sprintf("if m.Get%s() != nil {\n %s \n}", toProtoGoName(n), e2)
+			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 {\n %s \n}", t2.Mask, d2)
+		case mtproto_parser.TVectorType:
+			t3, _ := t.(mtproto_parser.TVectorType)
 			e2, d2 := makeCodecCode(params, n, t3.Type, idx)
 			e = fmt.Sprintf("if m.Get%s() != nil {\n %s \n}", toProtoGoName(n), e2)
 			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 {\n %s \n}", t2.Mask, d2)
@@ -301,16 +353,30 @@ func makeCodecCode(params []mtproto_parser.Param, n string, t mtproto_parser.Typ
 			e = fmt.Sprintf("x.VectorString(m.Get%s())\n", n2)
 			d = fmt.Sprintf("m.Set%s(dbuf.VectorString())", n2)
 		case mtproto_parser.CustomType, mtproto_parser.Constructor:
-			e = fmt.Sprintf("x.Int(int32(m.Get%s()))\n", n2)
-			e += fmt.Sprintf("for _, v: = range m.Get%s() {\n", n2)
-			e += fmt.Sprintf("  x.buf = append(x.buf, *v.Encode()...)")
-			e += fmt.Sprintf("}", n2)
-			d = fmt.Sprintf("ln := dbuf.Int()\n", n2)
-			d = fmt.Sprintf("m.Set%s(make([]*%s, ln))", n2, toGolangType(t2.Type))
-			d = fmt.Sprintf("for i < ln {\n m.Get%s()[i] = &%s\n (*m.Data2.%s[i]).Decode(dbuf)\n}", n2, toGolangType(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
+			// e  = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_vector))\n")
+			e += fmt.Sprintf("x.Int(int32(m.Get%s()))\n", n2)
+			e += fmt.Sprintf("for _, v := range m.Get%s() {\n", n2)
+			e += fmt.Sprintf("  x.buf = append(x.buf, (*v).Encode()...)\n")
+			e += fmt.Sprintf("}")
+
+			// d += fmt.Sprintf("c%d := dbuf.Int()\n", idx)
+			// d += fmt.Sprintf("if c%d != TLConstructor_CRC32_vector {\n", idx)
+			// d += fmt.Sprintf("	dbuf.err = fmt.Sprintf(\"Invalid CRC32_vector, c%d := %d\", %d, c%d)\n", idx, idx, idx, idx)
+			// d += fmt.Sprintf("	return dbuf.err\n")
+			// d += fmt.Sprintf("}\n")
+			d += fmt.Sprintf("l%d := dbuf.Int()\n", idx)
+			d += fmt.Sprintf("v%d := make([]*%s, l%d)\n", idx, toGolangType2(t2.Type), idx)
+			d += fmt.Sprintf("for i := int32(0); i < l%d; i++ {\n", idx)
+			d += fmt.Sprintf("	v%d[i] = &%s{}\n", idx, toGolangType2(t2.Type))
+			d += fmt.Sprintf("	v%d[i].Decode(dbuf)\n", idx)
+			d += fmt.Sprintf("}\n")
+			d += fmt.Sprintf("m.Set%s(v%d)\n", n2, idx)
+
+			// d += fmt.Sprintf("m.Set%s(make([]*%s, ln))", n2, toGolangType(t2.Type))
+			// d += fmt.Sprintf("for i < ln {\n m.Get%s()[i] = &%s\n (*m.Data2.%s[i]).Decode(dbuf)\n}", n2, toGolangType(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
 		}
 	case mtproto_parser.TVectorType:
-		t2, _ := t.(mtproto_parser.BuiltInVectorType)
+		t2, _ := t.(mtproto_parser.TVectorType)
 		n2 := toProtoGoName(n)
 		switch t2.Type.(type) {
 		case mtproto_parser.IntType:
@@ -323,21 +389,51 @@ func makeCodecCode(params []mtproto_parser.Param, n string, t mtproto_parser.Typ
 			e = fmt.Sprintf("x.VectorString(m.Get%s())\n", n2)
 			d = fmt.Sprintf("m.Set%s(dbuf.VectorString())", n2)
 		case mtproto_parser.CustomType, mtproto_parser.Constructor:
-			e = "x.Int(int32(TLConstructor_CRC32_vector))"
-			e += fmt.Sprintf("x.Int(int32(m.Get%s()))\n", n2)
-			e += fmt.Sprintf("for _, v: = range m.Get%s() {\n", n2)
-			e += fmt.Sprintf("  x.buf = append(x.buf, *v.Encode()...)", n2)
-			e += fmt.Sprintf("}", n2)
+			e = "x.Int(int32(TLConstructor_CRC32_vector))\n"
+			e += fmt.Sprintf("x.Int(int32(len(m.Get%s())))\n", n2)
+			e += fmt.Sprintf("for _, v := range m.Get%s() {\n", n2)
+			e += fmt.Sprintf("  x.buf = append(x.buf, (*v).Encode()...)\n")
+			e += fmt.Sprintf("}")
 
-			d = "dbuf.Int()\n"
-			d += fmt.Sprintf("ln := dbuf.Int()\n", n2)
-			d += fmt.Sprintf("m.Data2.%s = make([]%s, ln)", n2, toGolangType(t2.Type))
-			d += fmt.Sprintf("for i < ln {\n m.Data2.%s[i] = &%s\n (*m.Data2.%s[i]).Decode(dbuf)\n}", n2, toGolangType2(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
+			// d = "dbuf.Int()\n"
+			// d += fmt.Sprintf("ln := dbuf.Int()\n", n2)
+			// d += fmt.Sprintf("m.Data2.%s = make([]%s, ln)", n2, toGolangType(t2.Type))
+			// d += fmt.Sprintf("for i < ln {\n m.Data2.%s[i] = &%s\n (*m.Data2.%s[i]).Decode(dbuf)\n}", n2, toGolangType2(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
+			d += fmt.Sprintf("c%d := dbuf.Int()\n", idx)
+			d += fmt.Sprintf("if c%d != int32(TLConstructor_CRC32_vector) {\n", idx)
+			d += fmt.Sprintf("	dbuf.err = fmt.Sprintf(\"Invalid CRC32_vector, c%%d: %%d\", %d, c%d)\n", idx, idx)
+			d += fmt.Sprintf("	return dbuf.err\n")
+			d += fmt.Sprintf("}\n")
+			d  = fmt.Sprintf("l%d := dbuf.Int()\n", idx)
+			d += fmt.Sprintf("v%d := make([]*%s, l%d)\n", idx, toGolangType2(t2.Type), idx)
+			d += fmt.Sprintf("for i := int32(0); i < l%d; i++ {\n", idx)
+			d += fmt.Sprintf("	v%d[i] = &%s{}\n", idx, toGolangType2(t2.Type))
+			d += fmt.Sprintf("	v%d[i].Decode(dbuf)\n", idx)
+			d += fmt.Sprintf("}\n")
+			d += fmt.Sprintf("m.Set%s(v%d)\n", n2, idx)
 		}
-	case mtproto_parser.CustomType, mtproto_parser.Constructor:
-		e = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_%s)")
+	case mtproto_parser.CustomType:
+		// t2, _ := t.(mtproto_parser.CustomType)
+		e = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_%s))\n", toMessageName(t.Name()))
 		e = fmt.Sprintf("x.Bytes(m.Get%s().Encode())", toProtoGoName(n))
+
 		d = fmt.Sprintf("m%d := &%s{}\n    m%d.Decode(dbuf)\n    m.Set%s(m%d)", idx, toGolangType2(t), idx, toProtoGoName(n), idx)
+
+		//d += fmt.Sprintf("c%d := dbuf.Int()\n", idx)
+		//d += fmt.Sprintf("if c%d != int32(TLConstructor_CRC32_%s) {\n", idx, toMessageName(t2.Name()))
+		//d += fmt.Sprintf("	dbuf.err = fmt.Sprintf(\"Invalid CRC32_%s, c%%d: %%d\", %d, c%d)\n", toMessageName(t2.Name()), idx, idx)
+		//d += fmt.Sprintf("}\n")
+	case mtproto_parser.Constructor:
+		t2, _ := t.(mtproto_parser.Constructor)
+		e = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_%s))\n", toMessageName(t2.Name()))
+		e = fmt.Sprintf("x.Bytes(m.Get%s().Encode())", toProtoGoName(n))
+
+		d += fmt.Sprintf("c%d := dbuf.Int()\n", idx)
+		d += fmt.Sprintf("if c%d != int32(TLConstructor_CRC32_%s) {\n", idx, toMessageName(t2.Name()))
+		d += fmt.Sprintf("	dbuf.err = fmt.Sprintf(\"Invalid CRC32_%s, c%%d: %%d\", %d, c%d)\n", toMessageName(t2.Name()), idx, idx)
+		d += fmt.Sprintf("}\n")
+
+		// d = fmt.Sprintf("m%d := &%s{}\n    m%d.Decode(dbuf)\n    m.Set%s(m%d)", idx, toGolangType2(t), idx, toProtoGoName(n), idx)
 	case mtproto_parser.TemplateType:
 		// n = "[]byte"
 		e = fmt.Sprintf("x.Bytes(m.Get%s())", toProtoGoName(n))
@@ -520,10 +616,10 @@ func makeCodecCode2(params []mtproto_parser.Param, n string, t mtproto_parser.Ty
 		d = fmt.Sprintf("m.%s = dbuf.Double()", toProtoGoName(n))
 	case mtproto_parser.Int128Type:
 		e = fmt.Sprintf("x.Bytes(m.%s)", toProtoGoName(n))
-		d = fmt.Sprintf("m.%s = dbuf.Bytes()", toProtoGoName(n))
+		d = fmt.Sprintf("m.%s = dbuf.Bytes(16)", toProtoGoName(n))
 	case mtproto_parser.Int256Type:
 		e = fmt.Sprintf("x.Bytes(m.%s)", toProtoGoName(n))
-		d = fmt.Sprintf("m.%s = dbuf.Bytes()", toProtoGoName(n))
+		d = fmt.Sprintf("m.%s = dbuf.Bytes(32)", toProtoGoName(n))
 	case mtproto_parser.StringType:
 		e = fmt.Sprintf("x.String(m.%s)", toProtoGoName(n))
 		d = fmt.Sprintf("m.%s = dbuf.String()", toProtoGoName(n))
@@ -554,8 +650,8 @@ func makeCodecCode2(params []mtproto_parser.Param, n string, t mtproto_parser.Ty
 		mtproto_parser.CustomType,
 		mtproto_parser.BytesType:
 			e2, d2 := makeCodecCode2(params, n, t2.Type, idx)
-			e = fmt.Sprintf("if m.%s != nil { %s }", toProtoGoName(n), e2)
-			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 { %s }", t2.Mask, d2)
+			e = fmt.Sprintf("if m.%s != nil {\n %s \n}", toProtoGoName(n), e2)
+			d = fmt.Sprintf("if (flags & (1 << %s)) != 0 {\n %s \n}", t2.Mask, d2)
 		case mtproto_parser.BuiltInVectorType, mtproto_parser.TVectorType:
 			t3, _ := t.(mtproto_parser.BuiltInVectorType)
 			e2, d2 := makeCodecCode2(params, n, t3.Type, idx)
@@ -579,15 +675,15 @@ func makeCodecCode2(params []mtproto_parser.Param, n string, t mtproto_parser.Ty
 			d = fmt.Sprintf("m.%s = dbuf.VectorString()", n2)
 		case mtproto_parser.CustomType, mtproto_parser.Constructor:
 			e = fmt.Sprintf("x.Int(int32(m.%s))\n", n2)
-			e += fmt.Sprintf("for _, v: = range m.%s {\n", n2)
-			e += fmt.Sprintf("  x.buf = append(x.buf, *v.Encode()...)")
-			e += fmt.Sprintf("}", n2)
-			d = fmt.Sprintf("ln := dbuf.Int()\n", n2)
-			d = fmt.Sprintf("m.%s = make([]*%s, ln)", n2, toGolangType(t2.Type))
-			d = fmt.Sprintf("for i < ln {\n m.%s[i] = &%s\n (*m.%s[i]).Decode(dbuf)\n}", n2, toGolangType(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
+			e += fmt.Sprintf("for _, v := range m.%s {\n", n2)
+			e += fmt.Sprintf("  x.buf = append(x.buf, (*v).Encode()...)\n")
+			e += fmt.Sprintf("}\n")
+			d = fmt.Sprintf("l%d := dbuf.Int()\n", idx)
+			d = fmt.Sprintf("m.%s = make([]*%s, l%d)\n", n2, toGolangType2(t2.Type), idx)
+			d = fmt.Sprintf("for i := int32(0); i < l%d; i++ {\n m.%s[i] = &%s\n (*m.%s[i]).Decode(dbuf)\n}", idx, n2, toGolangType2(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
 		}
 	case mtproto_parser.TVectorType:
-		t2, _ := t.(mtproto_parser.BuiltInVectorType)
+		t2, _ := t.(mtproto_parser.TVectorType)
 		n2 := toProtoGoName(n)
 		switch t2.Type.(type) {
 		case mtproto_parser.IntType:
@@ -600,20 +696,20 @@ func makeCodecCode2(params []mtproto_parser.Param, n string, t mtproto_parser.Ty
 			e = fmt.Sprintf("x.VectorString(m.%s)\n", n2)
 			d = fmt.Sprintf("m.%s = dbuf.VectorString()", n2)
 		case mtproto_parser.CustomType, mtproto_parser.Constructor:
-			e = "x.Int(int32(TLConstructor_CRC32_vector))"
-			e += fmt.Sprintf("x.Int(int32(m.%s))\n", n2)
-			e += fmt.Sprintf("for _, v: = range m.%s {\n", n2)
-			e += fmt.Sprintf("  x.buf = append(x.buf, *v.Encode()...)", n2)
-			e += fmt.Sprintf("}", n2)
+			e = "x.Int(int32(TLConstructor_CRC32_vector))\n"
+			e += fmt.Sprintf("x.Int(int32(len(m.%s)))\n", n2)
+			e += fmt.Sprintf("for _, v := range m.%s {\n", n2)
+			e += fmt.Sprintf("  x.buf = append(x.buf, (*v).Encode()...)\n")
+			e += fmt.Sprintf("}")
 
-			d = "dbuf.Int()\n"
-			d += fmt.Sprintf("ln := dbuf.Int()\n", n2)
-			d += fmt.Sprintf("m.%s = make([]%s, ln)", n2, toGolangType(t2.Type))
-			d += fmt.Sprintf("for i < ln {\n m.%s[i] = &%s\n (*m.%s[i]).Decode(dbuf)\n}", n2, toGolangType2(t2.Type)) // ln := len(m.Data2.%s)\n", n2)
+			d = "dbuf.Int()  // TODO(@benqi): Check crc32 invalid\n"
+			d += fmt.Sprintf("l%d := dbuf.Int()\n", idx)
+			d += fmt.Sprintf("m.%s = make([]%s, l%d)\n", n2, toGolangType(t2.Type), idx)
+			d += fmt.Sprintf("for i := int32(0); i < l%d; i++ {\n m.%s[i] = &%s{}\n (*m.%s[i]).Decode(dbuf)\n}", idx, n2, toGolangType2(t2.Type), n2) // ln := len(m.Data2.%s)\n", n2)
 		}
 	case mtproto_parser.CustomType, mtproto_parser.Constructor:
-		e = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_%s)")
-		e = fmt.Sprintf("x.Bytes(m.%s.Encode())", toProtoGoName(n))
+		// e = fmt.Sprintf("x.Int(int32(TLConstructor_CRC32_%s))\n", toMessageName(t.Name()))
+		e += fmt.Sprintf("x.Bytes(m.%s.Encode())", toProtoGoName(n))
 		d = fmt.Sprintf("m%d := &%s{}\n    m%d.Decode(dbuf)\n    m.%s = m%d", idx, toGolangType2(t), idx, toProtoGoName(n), idx)
 	case mtproto_parser.TemplateType:
 		// n = "[]byte"
@@ -734,6 +830,69 @@ func makeFunctionDataListTpl(schemas *mtproto_parser.Schemas) (funcs []TplMessag
 	//	funcs.ServiceList = append(funcs.ServiceList, *v)
 	//	// glog.Info(v)
 	//}
+
+	return
+}
+
+/*
+type TplServiceData struct {
+	RPCName string
+	RequestName string
+	ResponseName string
+	Line string
+}
+ */
+
+func makeServiceDataListTpl(schemas *mtproto_parser.Schemas) (serviceList map[string][]TplServiceData) {
+	// RequestList
+	serviceList = make(map[string][]TplServiceData)
+
+	for _, c := range schemas.FunctionList {
+		rpcName := strings.Split(c.Method, ".")[0]
+		if checkByStringList(ignoreRpcList, rpcName) {
+			continue
+		}
+
+		if _, ok := serviceList[rpcName]; !ok {
+			serviceList[rpcName] = []TplServiceData{}
+		}
+		service := &TplServiceData{
+			RPCName: toProtoGoName(rpcName),
+			MethodName: c.Method,
+			RequestName: toProtoGoName(toMessageName(c.Method)),
+			Line: c.Line,
+			ResponseName: toProtoGoName(toMessageName(c.ResType.Name())),
+		}
+
+		switch c.ResType.(type) {
+		case mtproto_parser.TVectorType:
+		//case mtproto_parser.IntType:
+		//	e = fmt.Sprintf("x.VectorInt(m.%s)\n", n2)
+		//	d = fmt.Sprintf("m.%s = dbuf.VectorInt()", n2)
+		//case mtproto_parser.LongType:
+		//	e = fmt.Sprintf("x.VectorLong(m.%s)\n", n2)
+		//	d = fmt.Sprintf("m.%s = dbuf.VectorLong()", n2)
+
+			service.ResponseName = "Vector_" + toProtoGoName(toMessageName(c.ResType.(mtproto_parser.TVectorType).Type.Name()))
+			// TODO(@benqi): 很土的办法
+			if service.ResponseName == "Vector_Int" {
+				service.ResponseName = "VectorInt"
+			} else if service.ResponseName == "Vector_Long" {
+				service.ResponseName = "VectorLong"
+			}
+		case mtproto_parser.BuiltInVectorType:
+			service.ResponseName = "Vector_" + toProtoGoName(toMessageName(c.ResType.(mtproto_parser.BuiltInVectorType).Type.Name()))
+			// TODO(@benqi): 很土的办法
+			if service.ResponseName == "Vector_Int" {
+				service.ResponseName = "VectorInt"
+			} else if service.ResponseName == "Vector_Long" {
+				service.ResponseName = "VectorLong"
+			}
+		default:
+			service.ResponseName = toProtoGoName(toMessageName(c.ResType.Name()))
+		}
+		serviceList[rpcName] = append(serviceList[rpcName], *service)
+	}
 
 	return
 }

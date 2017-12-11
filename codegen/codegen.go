@@ -21,7 +21,10 @@ import (
 	mtproto_parser "github.com/nebulaim/mtprotoc/codegen/parser"
 	"github.com/golang/glog"
 	"flag"
+	// "github.com/nebulaim/mtprotoc/codegen/gen/golang"
+	// "github.com/nebulaim/mtprotoc/codegen/gen/proto"
 	"github.com/nebulaim/mtprotoc/codegen/gen/golang"
+	"github.com/nebulaim/mtprotoc/codegen/gen/proto"
 )
 
 func init() {
@@ -39,6 +42,6 @@ func main() {
 
 	// glog.Info(schemas.Layer)
 	// glog.Info(schemas.TypeMap)
-	// genproto.GenProto(schemas, "./")
+	genproto.GenProto(schemas, "./")
 	gengolang.GenGolang(schemas, "./")
 }

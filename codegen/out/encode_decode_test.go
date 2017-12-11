@@ -55,15 +55,15 @@ func (m *Error) To_TLError() *TLError {
 func (m *TLError) To_Error() *Error {
 	return &Error{
 		Constructor: TLConstructor_CRC32_error,
-		Data2: m.Data2,
+		Data2:       m.Data2,
 	}
 }
 
 func (m *TLError) SetCode(v int32) { m.Data2.Code = v }
-func (m *TLError) GetCode() int32 { return m.Data2.Code }
+func (m *TLError) GetCode() int32  { return m.Data2.Code }
 
 func (m *TLError) SetText(v string) { m.Data2.Text = v }
-func (m *TLError) GetText() string { return m.Data2.Text }
+func (m *TLError) GetText() string  { return m.Data2.Text }
 
 func (m *TLError) Encode() []byte {
 	x := NewEncodeBuf(512)

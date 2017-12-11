@@ -49,6 +49,6 @@ message TL_{{.Name}} {
 {{ range .ServiceList }}
 service RPC{{.Name}} {
 {{range .SubMessageList}}// {{.Line}}
-rpc {{.Name}}(TL_{{.Name}}) returns ({{.ResType}}) {}
+    rpc {{.Name}}(TL_{{.Name}}) returns ({{.ResType}}) {}
 {{end}}}
 {{end}}

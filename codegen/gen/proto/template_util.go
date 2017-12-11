@@ -268,7 +268,7 @@ func makeFunctionDataListTpl(schemas *mtproto_parser.Schemas) (funcs *TplFunctio
 		service, ok := serviceTypeMap[rpcName]
 		if !ok {
 			service = &TplBaseTypeData{
-				Name: rpcName,
+				Name: toMessageName(rpcName),
 			}
 			serviceTypeMap[rpcName] = service
 		}
@@ -321,9 +321,11 @@ func makeFunctionDataListTpl(schemas *mtproto_parser.Schemas) (funcs *TplFunctio
 		service.SubMessageList = append(service.SubMessageList, serviceMessage)
 	}
 
-	for _, v := range serviceTypeMap {
+	for k, v := range serviceTypeMap {
 		if checkByStringList(ignoreRpcList, v.Name) {
 			continue
+		} else {
+			serviceTypeMap[k].Name = strings.ToUpper(v.Name[:1]) + v.Name[1:]
 		}
 		funcs.ServiceList = append(funcs.ServiceList, *v)
 		// glog.Info(v)

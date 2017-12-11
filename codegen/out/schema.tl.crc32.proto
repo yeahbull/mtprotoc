@@ -33,6 +33,7 @@ enum TLConstructor {
     CRC32_msg_container = 1945237724;
     CRC32_msg_copy = 530561358;
     CRC32_gzip_packed = 812830625;
+    CRC32_rpc_result = -212046591;
     CRC32_resPQ = 85337187;
     CRC32_p_q_inner_data = -2083955988;
     CRC32_server_DH_params_fail = 2043348061;

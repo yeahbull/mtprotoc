@@ -30,6 +30,32 @@ import "schema.tl.crc32.proto";
 
 
 ///////////////////////////////////////////////////////////////////////////////
+// Server_DH_Params <--
+//  + TL_server_DH_params_fail
+//  + TL_server_DH_params_ok
+//
+message Server_DH_Params_Data {
+    bytes nonce = 1;
+    bytes server_nonce = 2;
+    bytes new_nonce_hash = 3;
+    string encrypted_answer = 4;
+}
+
+message Server_DH_Params {
+    TLConstructor constructor = 1;
+    Server_DH_Params_Data data2 = 2;
+}
+
+// server_DH_params_fail#79cb045d nonce:int128 server_nonce:int128 new_nonce_hash:int128 = Server_DH_Params;
+message TL_server_DH_params_fail {
+    Server_DH_Params_Data data2 = 2;
+}
+// server_DH_params_ok#d0e8075c nonce:int128 server_nonce:int128 encrypted_answer:string = Server_DH_Params;
+message TL_server_DH_params_ok {
+    Server_DH_Params_Data data2 = 2;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // Server_DH_inner_data <--
 //  + TL_server_DH_inner_data
 //
@@ -174,31 +200,5 @@ message P_Q_inner_data {
 // p_q_inner_data#83c95aec pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 = P_Q_inner_data;
 message TL_p_q_inner_data {
     P_Q_inner_data_Data data2 = 2;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// Server_DH_Params <--
-//  + TL_server_DH_params_fail
-//  + TL_server_DH_params_ok
-//
-message Server_DH_Params_Data {
-    bytes nonce = 1;
-    bytes server_nonce = 2;
-    bytes new_nonce_hash = 3;
-    string encrypted_answer = 4;
-}
-
-message Server_DH_Params {
-    TLConstructor constructor = 1;
-    Server_DH_Params_Data data2 = 2;
-}
-
-// server_DH_params_fail#79cb045d nonce:int128 server_nonce:int128 new_nonce_hash:int128 = Server_DH_Params;
-message TL_server_DH_params_fail {
-    Server_DH_Params_Data data2 = 2;
-}
-// server_DH_params_ok#d0e8075c nonce:int128 server_nonce:int128 encrypted_answer:string = Server_DH_Params;
-message TL_server_DH_params_ok {
-    Server_DH_Params_Data data2 = 2;
 }
 

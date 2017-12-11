@@ -30,6 +30,28 @@ import (
     "github.com/golang/glog"
 )
 
+type newTLObjectFunc func() TLObject
+
+var registers2 = map[int32]newTLObjectFunc{
+    int32(TLConstructor_CRC32_message2) : func() (TLObject) { return &TLMessage2{} },
+    int32(TLConstructor_CRC32_msg_container) : func() (TLObject) { return &TLMsgContainer{} },
+    int32(TLConstructor_CRC32_msg_copy) : func() (TLObject) { return &TLMsgCopy{} },
+    int32(TLConstructor_CRC32_gzip_packed) : func() (TLObject) { return &TLGzipPacked{} },
+    int32(TLConstructor_CRC32_rpc_result) : func() (TLObject) { return &TLRpcResult{} },
+{{ range .CRC32List }}    int32(TLConstructor_CRC32_{{.Name}}):  func() TLObject { return NewTL{{.Type}}() },
+{{end}}
+}
+
+func NewTLObjectByClassID(classId int32) TLObject {
+m, ok := registers2[classId]
+if !ok {
+return nil
+}
+return m()
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
 {{ range .BaseTypeList }}
 ///////////////////////////////////////////////////////////////////////////////
 // {{.Name}} <--
@@ -84,6 +106,10 @@ func (m *TL{{$v.Name}}) Set{{.Name}}(v {{.Type}}) { m.Data2.{{.Name2}} = v }
 func (m *TL{{$v.Name}}) Get{{.Name}}() {{.Type}} { return m.Data2.{{.Name2}} }
 {{end}}
 
+func NewTL{{.Name}}() * TL{{.Name}} {
+    return &TL{{.Name}}{ Data2: &{{.ResType}}_Data{} }
+}
+
 func (m* TL{{.Name}}) Encode() []byte {
     x := NewEncodeBuf(512)
     x.Int(int32(TLConstructor_CRC32_{{.Predicate}}))
@@ -102,6 +128,10 @@ func (m* TL{{.Name}}) Decode(dbuf *DecodeBuf) error {
 {{end}}
 
 {{range .RequestList}}
+func NewTL{{.Name}}() * TL{{.Name}} {
+    return &TL{{.Name}}{}
+}
+
 func (m* TL{{.Name}}) Encode() []byte {
 x := NewEncodeBuf(512)
 x.Int(int32(TLConstructor_CRC32_{{.Predicate}}))

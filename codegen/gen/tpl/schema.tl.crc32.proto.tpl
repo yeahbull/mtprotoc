@@ -33,5 +33,6 @@ enum TLConstructor {
     CRC32_msg_container = 1945237724;
     CRC32_msg_copy = 530561358;
     CRC32_gzip_packed = 812830625;
+    CRC32_rpc_result = -212046591;
 {{ range .CRC32List }}    CRC32_{{.Name}} = {{.Id}};
 {{end}}}
