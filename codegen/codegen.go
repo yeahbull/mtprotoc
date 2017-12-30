@@ -23,7 +23,7 @@ import (
 	"flag"
 	// "github.com/nebulaim/mtprotoc/codegen/gen/golang"
 	// "github.com/nebulaim/mtprotoc/codegen/gen/proto"
-	"github.com/nebulaim/mtprotoc/codegen/gen/golang"
+	// "github.com/nebulaim/mtprotoc/codegen/gen/golang"
 	"github.com/nebulaim/mtprotoc/codegen/gen/proto"
 )
 
@@ -43,5 +43,5 @@ func main() {
 	// glog.Info(schemas.Layer)
 	// glog.Info(schemas.TypeMap)
 	genproto.GenProto(schemas, "./")
-	gengolang.GenGolang(schemas, "./")
+	// gengolang.GenGolang(schemas, "./")
 }
