@@ -23,7 +23,7 @@ import (
     "golang.org/x/net/context"
     "fmt"
     "github.com/nebulaim/telegramd/grpc_util"
-    "github.com/nebulaim/telegramd/base/logger"
+    "github.com/nebulaim/telegramd/baselib/logger"
 )
 
 // {{.Line}}

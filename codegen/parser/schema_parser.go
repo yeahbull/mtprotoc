@@ -195,7 +195,7 @@ func Parse(filePath string) (*MTProtoSchemas, error) {
 
 		if typeid != countTypeId {
 			glog.Warning("Warning: counted ", countTypeId, " mismatch with provided ", typeid, " (", nametype[1], nametype[3], nametype[4], ")")
-			continue;
+			continue
 		}
 
 		restype := nametype[4]
