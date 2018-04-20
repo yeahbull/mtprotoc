@@ -229,7 +229,7 @@ func Parse(filePath string) (*MTProtoSchemas, error) {
 		paramsList := strings.Split(strings.TrimSpace(nametype[3]), " ")
 		var isTemplate, hasFlags, hasTemplate string
 
-		params := []Param{}
+		var params []Param
 		for _, param := range paramsList {
 			if matched, _ := regexp.MatchString("^\\s*$", param); matched {
 				// glog.Errorf("bad param found in param: %s, in line: %s", param, line)
